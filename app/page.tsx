@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ParticleCanvas } from "@/components/particle-canvas";
 import { EulyMascot } from "@/components/euly-mascot";
+import { QuantumSandbox } from "@/components/quantum-sandbox";
 import { 
   Atom, 
   Lightbulb, 
@@ -25,7 +26,9 @@ import {
   Crown,
   Shield,
   Send,
-  AlertCircle
+  AlertCircle,
+  ChevronLeft,
+  Info
 } from "lucide-react";
 
 export default function Home() {
@@ -40,6 +43,108 @@ export default function Home() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Ticker Banner State
+  const [currentHeadlineIdx, setCurrentHeadlineIdx] = useState(0);
+  const headlines = [
+    "📢 EULIM Science Exhibition 2025 returns on October 9 at Synergy Square! Abstracts close Sept 15.",
+    "🏆 Quantum Quest 2026 registration is active. Prepare your team for the Enigma Expedition!",
+    "⚡ EXPERIMENTAL: Click Euly the Mascot in the hero section to toggle Mad Science Mode!",
+    "💡 Did you know? EULIM stands for Euler, Limits, and Infinite Matrices!",
+    "🔬 Light takes 8 minutes and 19 seconds to travel from the Sun to the Earth.",
+    "🧬 Absolute zero is -273.15 degrees Celsius. All molecular motion stops!",
+    "🌌 Quantum superposition means a particle can be in two states at once!",
+    "📐 Mathematics is the language in which God has written the universe.",
+    "💼 Collaborative panels confirmed: AM Industries & Wellvora confirm panel participation at Synergy Square."
+  ];
+
+  // Carousel State
+  const [activeSlide, setActiveSlide] = useState(0);
+  const carouselSlides = [
+    {
+      img: "https://live.staticflickr.com/65535/54845014351_248207131a_c.jpg",
+      title: "Opening Ceremony",
+      tag: "Exhibition 2025",
+      desc: "Faculty and student delegates inaugurating the flagship science pavilion."
+    },
+    {
+      img: "https://live.staticflickr.com/65535/54844160522_02207994d2_b.jpg",
+      title: "Discovery Constructs",
+      tag: "Physics & Chemistry Labs",
+      desc: "Students demonstrating electromagnetic orbits and chemical formulas."
+    },
+    {
+      img: "https://live.staticflickr.com/65535/54845338505_000ca74e69_c.jpg",
+      title: "Jury Assessment",
+      tag: "Insight Showcase",
+      desc: "Jury panels reviewing quantitative data and mathematical modeling research."
+    },
+    {
+      img: "https://live.staticflickr.com/65535/55145781247_06376c09bd_c.jpg",
+      title: "The Quest Begins",
+      tag: "Enigma Expedition",
+      desc: "Treasure hunters decoding physics-inspired clues across campuses."
+    },
+    {
+      img: "https://live.staticflickr.com/65535/55146839093_fb82993af7_c.jpg",
+      title: "The Final Showdown",
+      tag: "Quantum Quest",
+      desc: "Participants completing the smart hardware puzzles to unlock the portal."
+    }
+  ];
+
+  // Mad Science Mode State
+  const [isMadMode, setIsMadMode] = useState(false);
+
+  const handleToggleMadMode = () => {
+    const nextMode = !isMadMode;
+    setIsMadMode(nextMode);
+    if (nextMode) {
+      if (typeof window !== "undefined") {
+        document.documentElement.classList.add("mad-science");
+      }
+      triggerPulseEffect();
+      triggerToast("Mad Science Mode 🚨", "Neon charge injected! Enjoy the cyberpunk lab overlay.");
+    } else {
+      if (typeof window !== "undefined") {
+        document.documentElement.classList.remove("mad-science");
+      }
+      triggerToast("Standard Mode 🔬", "Orbits stabilized. Normal operations restored.");
+    }
+  };
+
+  const triggerPulseEffect = () => {
+    if (typeof document === "undefined") return;
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.inset = "0";
+    overlay.style.backgroundColor = "rgba(168, 85, 247, 0.15)";
+    overlay.style.pointerEvents = "none";
+    overlay.style.zIndex = "9999";
+    overlay.style.transition = "opacity 0.6s ease";
+    document.body.appendChild(overlay);
+    setTimeout(() => {
+      overlay.style.opacity = "0";
+      setTimeout(() => overlay.remove(), 600);
+    }, 100);
+  };
+
+  useEffect(() => {
+    // 10s Ticker Interval
+    const bannerTimer = setInterval(() => {
+      setCurrentHeadlineIdx(prev => (prev + 1) % headlines.length);
+    }, 10000);
+
+    // 6s Carousel Auto-advance
+    const carouselTimer = setInterval(() => {
+      setActiveSlide(prev => (prev + 1) % carouselSlides.length);
+    }, 6000);
+
+    return () => {
+      clearInterval(bannerTimer);
+      clearInterval(carouselTimer);
+    };
+  }, [headlines.length, carouselSlides.length]);
 
   const triggerToast = (title: string, desc: string) => {
     setToast({ title, desc });
@@ -129,75 +234,309 @@ export default function Home() {
     { name: "Silver Element", perk: "Logo on website footer, digital certificates, and collective social media sponsor acknowledgement.", icon: "🧪" }
   ];
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.6 }
+  const handlePrevSlide = () => {
+    setActiveSlide(prev => (prev - 1 + carouselSlides.length) % carouselSlides.length);
+  };
+
+  const handleNextSlide = () => {
+    setActiveSlide(prev => (prev + 1) % carouselSlides.length);
   };
 
   return (
     <div className="relative min-h-screen bg-white">
-      {/* SECTION 1: HERO */}
-      <section className="relative flex flex-col items-center justify-center pt-28 pb-20 md:pt-36 md:pb-28 border-b border-brand-border overflow-hidden min-h-[85vh]">
+      
+      {/* HEADLINE NEWS TICKER BANNER (Scrolls every 10 seconds) */}
+      <div className="w-full bg-gradient-to-r from-brand-cyan/15 via-brand-cyan/25 to-brand-cyan/15 border-b border-brand-border py-3 flex items-center overflow-hidden transition-all duration-300 relative shadow-sm select-none">
+        <div className="max-w-7xl mx-auto px-4 w-full flex items-center justify-between gap-4">
+          <div className="relative h-6 flex-1 overflow-hidden flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={currentHeadlineIdx}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="absolute text-xs sm:text-sm font-extrabold text-brand-blue tracking-wide w-full text-center flex items-center justify-center gap-2"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0" />
+                <span>{headlines[currentHeadlineIdx]}</span>
+                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0" />
+              </motion.p>
+            </AnimatePresence>
+          </div>
+          
+          {/* Quick toggle action for Mad Mode directly in the banner */}
+          <button
+            onClick={handleToggleMadMode}
+            className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-200 ${
+              isMadMode 
+                ? "bg-brand-cyan text-white border-brand-cyan animate-pulse" 
+                : "bg-white text-brand-blue/70 border-brand-border hover:border-brand-cyan hover:text-brand-cyan"
+            }`}
+          >
+            <span>Mad Mode</span>
+            <span className="text-xs">⚡</span>
+          </button>
+        </div>
+      </div>
+
+      {/* SECTION 1: SPLIT HERO */}
+      <section className="relative flex flex-col items-center justify-center pt-16 pb-20 md:pt-20 md:pb-24 border-b border-brand-border overflow-hidden min-h-[85vh]">
         <ParticleCanvas />
 
-        <div className="max-w-4xl mx-auto px-4 text-center z-10 flex flex-col items-center">
-          <div className="flex items-center gap-3 mb-6">
-            <EulyMascot pose="wave" size={70} className="hidden sm:flex shrink-0 animate-bounce" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-card/50 text-brand-cyan text-xs font-semibold uppercase tracking-wider"
-            >
-              <Atom className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "12s" }} />
-              School of Sciences • Christ University
-            </motion.div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Text & Buttons */}
+            <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+              
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={handleToggleMadMode}
+                  className="cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 relative group"
+                  title="Click Euly to toggle Mad Science Mode!"
+                >
+                  <EulyMascot pose={isMadMode ? "idea" : "wave"} size={60} className="shrink-0 animate-bounce" />
+                  <span className="absolute -top-1 right-0 w-2.5 h-2.5 rounded-full bg-brand-cyan animate-ping pointer-events-none" />
+                </div>
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-card/50 text-brand-cyan text-xs font-semibold uppercase tracking-wider"
+                >
+                  <Atom className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "12s" }} />
+                  School of Sciences • Christ University
+                </motion.div>
+              </div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-blue tracking-tight leading-[1.1] font-display"
+              >
+                Igniting Scientific Curiosity.
+                <br />
+                <span className="text-brand-cyan bg-gradient-to-r from-brand-cyan to-brand-blue bg-clip-text text-transparent">
+                  Bridging Theory & Innovation.
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="text-base sm:text-lg text-brand-blue/70 max-w-xl leading-relaxed font-normal"
+              >
+                Welcome to EULIM Science Club. We cultivate scientific temper, empower students to translate foundational knowledge into research, and connect academia with industry horizons.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+              >
+                <Link
+                  href="#about-club"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all duration-200 transform active:scale-95 shadow-md shadow-brand-cyan/10"
+                >
+                  Explore the Club
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Link>
+                <Link
+                  href="/exhibition"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-brand-blue hover:text-brand-cyan border border-brand-border bg-brand-card/50 hover:bg-brand-card rounded-pill transition-all duration-200 transform active:scale-95"
+                >
+                  Exhibition 2025 Hub
+                </Link>
+              </motion.div>
+
+            </div>
+
+            {/* Right Column: Carousel Frame */}
+            <div className="lg:col-span-6 w-full flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full max-w-xl border border-brand-border bg-white p-2 rounded-2xl shadow-md overflow-hidden group hover:border-brand-cyan/20 transition-all duration-300"
+              >
+                {/* Carousel Inner frame */}
+                <div className="relative h-64 sm:h-96 w-full bg-brand-card rounded-xl overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeSlide}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.02 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <img
+                        src={carouselSlides[activeSlide].img}
+                        alt={carouselSlides[activeSlide].title}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Glassmorphism details block */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/35 to-transparent flex items-end p-5 sm:p-7 text-left">
+                        <div className="space-y-1.5 max-w-md">
+                          <span className="text-[9px] font-bold text-brand-cyan uppercase tracking-widest bg-brand-cyan/20 border border-brand-cyan/35 px-2 py-0.5 rounded-full">
+                            {carouselSlides[activeSlide].tag}
+                          </span>
+                          <h3 className="text-lg font-bold text-white font-display">
+                            {carouselSlides[activeSlide].title}
+                          </h3>
+                          <p className="text-xs text-white/80 leading-relaxed">
+                            {carouselSlides[activeSlide].desc}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Navigation Arrows */}
+                  <button
+                    onClick={handlePrevSlide}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/85 border border-brand-border flex items-center justify-center text-brand-blue hover:text-brand-cyan hover:bg-white transform active:scale-95 transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+                    aria-label="Previous Slide"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={handleNextSlide}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/85 border border-brand-border flex items-center justify-center text-brand-blue hover:text-brand-cyan hover:bg-white transform active:scale-95 transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+                    aria-label="Next Slide"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Slide Indicators */}
+                <div className="absolute bottom-5 right-6 flex gap-1 z-20">
+                  {carouselSlides.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveSlide(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === activeSlide ? "w-4 bg-brand-cyan" : "w-1.5 bg-white/45"
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: EULIM LABS & EXHIBITIONS GALLERY */}
+      <section className="py-20 md:py-24 border-b border-brand-border bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Science in Action</h2>
+            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
+              EULIM in Focus
+            </p>
+            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
+              Explore the hands-on research tracks, experimental labs, and collaborative hubs forming the core of EULIM activities.
+            </p>
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-blue tracking-tight leading-[1.1] mb-6 font-display"
-          >
-            Igniting Scientific Curiosity.
-            <br />
-            <span className="text-brand-cyan bg-gradient-to-r from-brand-cyan to-brand-blue bg-clip-text text-transparent">
-              Bridging Theory & Innovation.
-            </span>
-          </motion.h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1: Discovery Constructs */}
+            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full">
+              <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
+                <img 
+                  src="https://live.staticflickr.com/65535/54844160522_02207994d2_b.jpg" 
+                  alt="Discovery Constructs Physics & Chemistry Labs"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/40 to-transparent" />
+                <span className="absolute top-3 left-3 text-[10px] font-bold text-white uppercase tracking-widest bg-brand-cyan/80 px-2.5 py-0.5 rounded-full">
+                  Physics & Chemistry Labs
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-brand-blue group-hover:text-brand-cyan transition-colors">
+                    Discovery Constructs
+                  </h3>
+                  <p className="text-xs text-brand-blue/70 leading-relaxed">
+                    Visualizing molecular structures and physical laws. Students formulate equations and demonstrate orbital dynamics using physical setups.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-brand-border-muted flex items-center text-[10px] font-bold text-brand-cyan uppercase tracking-wider">
+                  <span>Active Lab Track</span>
+                </div>
+              </div>
+            </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg md:text-xl text-brand-blue/70 max-w-2xl mb-10 leading-relaxed font-normal"
-          >
-            Welcome to EULIM Science Club. We cultivate scientific temper, empower students to translate foundational knowledge into research, and connect academia with industry horizons.
-          </motion.p>
+            {/* Card 2: Insight Showcase */}
+            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full">
+              <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
+                <img 
+                  src="https://live.staticflickr.com/65535/54845338505_000ca74e69_c.jpg" 
+                  alt="Insight Showcase Quantitative Data"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/40 to-transparent" />
+                <span className="absolute top-3 left-3 text-[10px] font-bold text-white uppercase tracking-widest bg-brand-ochre/80 px-2.5 py-0.5 rounded-full">
+                  Computational Math
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-brand-blue group-hover:text-brand-cyan transition-colors">
+                    Insight Showcase
+                  </h3>
+                  <p className="text-xs text-brand-blue/70 leading-relaxed">
+                    Bridging mathematics and experimental data. Featuring research displays, computational modeling projects, and statistical graph analysis.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-brand-border-muted flex items-center text-[10px] font-bold text-brand-ochre uppercase tracking-wider">
+                  <span>Exhibition Track</span>
+                </div>
+              </div>
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-          >
-            <Link
-              href="#about-club"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all duration-200 transform active:scale-95 shadow-md shadow-brand-cyan/10"
-            >
-              Explore the Club
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </Link>
-            <Link
-              href="/exhibition"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-brand-blue hover:text-brand-cyan border border-brand-border bg-brand-card/50 hover:bg-brand-card rounded-pill transition-all duration-200 transform active:scale-95"
-            >
-              Exhibition 2025 Hub
-            </Link>
-          </motion.div>
+            {/* Card 3: The Quantum Quest */}
+            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full md:col-span-2 lg:col-span-1">
+              <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
+                <img 
+                  src="https://live.staticflickr.com/65535/55146839093_fb82993af7_c.jpg" 
+                  alt="The Quantum Quest Campus Hunt"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/40 to-transparent" />
+                <span className="absolute top-3 left-3 text-[10px] font-bold text-white uppercase tracking-widest bg-purple-600/80 px-2.5 py-0.5 rounded-full">
+                  Interactive Expedition
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-brand-blue group-hover:text-brand-cyan transition-colors">
+                    Quantum Quest Hub
+                  </h3>
+                  <p className="text-xs text-brand-blue/70 leading-relaxed">
+                    Decoding clues and engineering smart hardware portals during the annual campus hunt. Fusing logical riddles with physics challenges.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-brand-border-muted flex items-center text-[10px] font-bold text-purple-600 uppercase tracking-wider">
+                  <span>Interactive Event</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -361,6 +700,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* INTERACTIVE EXPERIMENT: THE QUANTUM SANDBOX */}
+      <section className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
+            <EulyMascot pose="idea" size={70} className="mb-2 shrink-0 animate-bounce" />
+            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Live Lab Experiment</h2>
+            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
+              The Quantum Sandbox
+            </p>
+            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
+              Explore orbital trajectories. Spawn electron nodes and observe force vectors in real-time. Drag the central proton (+) to warp space-time!
+            </p>
+          </div>
+          <div className="max-w-5xl mx-auto">
+            <QuantumSandbox />
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 4: CLUB MILESTONES TIMELINE */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -478,7 +836,7 @@ export default function Home() {
               
               {/* Campuses/Quest bento photo gallery */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {quantumPhotos.slice(0, 5).map((photo, i) => (
+                {quantumPhotos.slice(0, 5).map((photo) => (
                   <div 
                     key={photo.label}
                     className={`relative rounded-lg overflow-hidden border border-brand-border h-36 group ${

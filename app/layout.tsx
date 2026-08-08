@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   authors: [{ name: "School of Sciences, Christ University" }],
 };
 
+interface LayoutProps<T> {
+  children: React.ReactNode;
+}
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html

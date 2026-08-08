@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ParticleCanvas } from "@/components/particle-canvas";
 import { EulyMascot } from "@/components/euly-mascot";
-import { QuantumSandbox } from "@/components/quantum-sandbox";
 import { 
   Atom, 
   Lightbulb, 
@@ -49,7 +48,6 @@ export default function Home() {
   const headlines = [
     "📢 EULIM Science Exhibition 2025 returns on October 9 at Synergy Square! Abstracts close Sept 15.",
     "🏆 Quantum Quest 2026 registration is active. Prepare your team for the Enigma Expedition!",
-    "⚡ EXPERIMENTAL: Click Euly the Mascot in the hero section to toggle Mad Science Mode!",
     "💡 Did you know? EULIM stands for Euler, Limits, and Infinite Matrices!",
     "🔬 Light takes 8 minutes and 19 seconds to travel from the Sun to the Earth.",
     "🧬 Absolute zero is -273.15 degrees Celsius. All molecular motion stops!",
@@ -92,42 +90,6 @@ export default function Home() {
       desc: "Participants completing the smart hardware puzzles to unlock the portal."
     }
   ];
-
-  // Mad Science Mode State
-  const [isMadMode, setIsMadMode] = useState(false);
-
-  const handleToggleMadMode = () => {
-    const nextMode = !isMadMode;
-    setIsMadMode(nextMode);
-    if (nextMode) {
-      if (typeof window !== "undefined") {
-        document.documentElement.classList.add("mad-science");
-      }
-      triggerPulseEffect();
-      triggerToast("Mad Science Mode 🚨", "Neon charge injected! Enjoy the cyberpunk lab overlay.");
-    } else {
-      if (typeof window !== "undefined") {
-        document.documentElement.classList.remove("mad-science");
-      }
-      triggerToast("Standard Mode 🔬", "Orbits stabilized. Normal operations restored.");
-    }
-  };
-
-  const triggerPulseEffect = () => {
-    if (typeof document === "undefined") return;
-    const overlay = document.createElement("div");
-    overlay.style.position = "fixed";
-    overlay.style.inset = "0";
-    overlay.style.backgroundColor = "rgba(168, 85, 247, 0.15)";
-    overlay.style.pointerEvents = "none";
-    overlay.style.zIndex = "9999";
-    overlay.style.transition = "opacity 0.6s ease";
-    document.body.appendChild(overlay);
-    setTimeout(() => {
-      overlay.style.opacity = "0";
-      setTimeout(() => overlay.remove(), 600);
-    }, 100);
-  };
 
   useEffect(() => {
     // 10s Ticker Interval
@@ -247,8 +209,8 @@ export default function Home() {
       
       {/* HEADLINE NEWS TICKER BANNER (Scrolls every 10 seconds) */}
       <div className="w-full bg-gradient-to-r from-brand-cyan/15 via-brand-cyan/25 to-brand-cyan/15 border-b border-brand-border py-3 flex items-center overflow-hidden transition-all duration-300 relative shadow-sm select-none">
-        <div className="max-w-7xl mx-auto px-4 w-full flex items-center justify-between gap-4">
-          <div className="relative h-6 flex-1 overflow-hidden flex items-center justify-center">
+        <div className="max-w-5xl mx-auto px-4 w-full flex justify-center text-center">
+          <div className="relative h-6 w-full overflow-hidden flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentHeadlineIdx}
@@ -264,19 +226,6 @@ export default function Home() {
               </motion.p>
             </AnimatePresence>
           </div>
-          
-          {/* Quick toggle action for Mad Mode directly in the banner */}
-          <button
-            onClick={handleToggleMadMode}
-            className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded border text-[10px] font-bold uppercase tracking-wider transition-all duration-200 ${
-              isMadMode 
-                ? "bg-brand-cyan text-white border-brand-cyan animate-pulse" 
-                : "bg-white text-brand-blue/70 border-brand-border hover:border-brand-cyan hover:text-brand-cyan"
-            }`}
-          >
-            <span>Mad Mode</span>
-            <span className="text-xs">⚡</span>
-          </button>
         </div>
       </div>
 
@@ -291,15 +240,7 @@ export default function Home() {
             <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
               
               <div className="flex items-center gap-3">
-                <div 
-                  onClick={handleToggleMadMode}
-                  className="cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 relative group"
-                  title="Click Euly to toggle Mad Science Mode!"
-                >
-                  <EulyMascot pose={isMadMode ? "idea" : "wave"} size={60} className="shrink-0 animate-bounce" />
-                  <span className="absolute -top-1 right-0 w-2.5 h-2.5 rounded-full bg-brand-cyan animate-ping pointer-events-none" />
-                </div>
-                
+                <EulyMascot pose="wave" size={60} className="shrink-0 animate-bounce" />
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -341,14 +282,14 @@ export default function Home() {
               >
                 <Link
                   href="#about-club"
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all duration-200 transform active:scale-95 shadow-md shadow-brand-cyan/10"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-md shadow-brand-cyan/10"
                 >
                   Explore the Club
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Link>
                 <Link
                   href="/exhibition"
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-brand-blue hover:text-brand-cyan border border-brand-border bg-brand-card/50 hover:bg-brand-card rounded-pill transition-all duration-200 transform active:scale-95"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-brand-blue hover:text-brand-cyan border border-brand-border bg-brand-card/50 hover:bg-brand-card rounded-pill transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
                 >
                   Exhibition 2025 Hub
                 </Link>
@@ -438,7 +379,13 @@ export default function Home() {
       <section className="py-20 md:py-24 border-b border-brand-border bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Science in Action</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
               EULIM in Focus
@@ -446,11 +393,17 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               Explore the hands-on research tracks, experimental labs, and collaborative hubs forming the core of EULIM activities.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1: Discovery Constructs */}
-            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full hover:scale-[1.02] active:scale-[0.99]"
+            >
               <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
                 <img 
                   src="https://live.staticflickr.com/65535/54844160522_02207994d2_b.jpg" 
@@ -476,10 +429,16 @@ export default function Home() {
                   <span>Active Lab Track</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 2: Insight Showcase */}
-            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full hover:scale-[1.02] active:scale-[0.99]"
+            >
               <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
                 <img 
                   src="https://live.staticflickr.com/65535/54845338505_000ca74e69_c.jpg" 
@@ -505,10 +464,16 @@ export default function Home() {
                   <span>Exhibition Track</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3: The Quantum Quest */}
-            <div className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full md:col-span-2 lg:col-span-1">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="group relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-3 shadow-sm hover:shadow-md hover:border-brand-cyan/20 transition-all duration-300 flex flex-col h-full md:col-span-2 lg:col-span-1 hover:scale-[1.02] active:scale-[0.99]"
+            >
               <div className="relative h-56 w-full rounded-xl overflow-hidden bg-brand-border">
                 <img 
                   src="https://live.staticflickr.com/65535/55146839093_fb82993af7_c.jpg" 
@@ -534,16 +499,22 @@ export default function Home() {
                   <span>Interactive Event</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
         </div>
       </section>
 
-      {/* SECTION 2: UNIVERSITY PORTFOLIO */}
+      {/* SECTION 3: UNIVERSITY PORTFOLIO */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Our Foundation</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
               CHRIST (Deemed to be University)
@@ -551,11 +522,17 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               Rooted in educational excellence and service, guiding research across campuses.
             </p>
-          </div>
+          </motion.div>
 
           {/* Vercel-style Grids for Vision and Journey */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white border border-brand-border p-8 rounded-lg shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-white border border-brand-border p-8 rounded-lg shadow-sm hover:scale-[1.01] hover:shadow-md transition-all duration-300"
+            >
               <h3 className="text-lg font-bold text-brand-blue mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
                 The Vision
@@ -563,9 +540,15 @@ export default function Home() {
               <p className="text-sm text-brand-blue/80 leading-relaxed">
                 Born out of the educational vision of <strong className="text-brand-blue">St Kuriakose Elias Chavara</strong>, an educationalist and social reformer of the nineteenth century in South India. He founded the first Catholic indigenous congregation, <strong className="text-brand-blue">Carmelites of Mary Immaculate (CMI)</strong>, in 1831 which administers CHRIST.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white border border-brand-border p-8 rounded-lg shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-white border border-brand-border p-8 rounded-lg shadow-sm hover:scale-[1.01] hover:shadow-md transition-all duration-300"
+            >
               <h3 className="text-lg font-bold text-brand-blue mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-ochre"></span>
                 The Journey
@@ -573,19 +556,26 @@ export default function Home() {
               <p className="text-sm text-brand-blue/80 leading-relaxed">
                 Established as &apos;Christ College&apos; in 1969, it undertook path-breaking initiatives in Indian higher education. Conferred Autonomy in 2004 and Deemed to be University status in 2008. Currently accredited with NAAC <span className="font-bold text-brand-cyan">A+ Grade</span> and ranked among India&apos;s leading institutions.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* COLOR FLARES: Big numbers in Solar Ochre / Cyan */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {universityHighlights.map((feat) => (
-              <div key={feat.title} className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/20 transition-all duration-300">
+            {universityHighlights.map((feat, idx) => (
+              <motion.div 
+                key={feat.title} 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+                className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/20 hover:scale-[1.03] transition-all duration-300"
+              >
                 <span className={`text-3xl font-extrabold block mb-2 font-display ${feat.color}`}>
                   {feat.stat}
                 </span>
                 <h4 className="text-sm font-bold text-brand-blue mb-1">{feat.title}</h4>
                 <p className="text-xs text-brand-blue/60 leading-relaxed">{feat.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -597,9 +587,13 @@ export default function Home() {
               {campuses.map((campus, i) => {
                 const isNcr = campus.code === "DELHI NCR";
                 return (
-                  <div 
+                  <motion.div 
                     key={campus.name}
-                    className={`bg-white border border-brand-border rounded-lg p-5 flex flex-col justify-between hover:border-brand-cyan/30 transition-all duration-300 ${
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: "easeOut" }}
+                    className={`bg-white border border-brand-border rounded-lg p-5 flex flex-col justify-between hover:border-brand-cyan/30 hover:scale-[1.02] transition-all duration-300 ${
                       isNcr ? "lg:col-span-2 lg:row-span-2 border-brand-cyan bg-brand-card/40" : "lg:col-span-2"
                     }`}
                   >
@@ -614,7 +608,7 @@ export default function Home() {
                         <span className="text-[10px] text-brand-blue/50">Ghaziabad, UP</span>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -623,22 +617,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3: THE EULIM SCIENCE CLUB ABOUT */}
+      {/* SECTION 4: THE EULIM SCIENCE CLUB ABOUT */}
       <section id="about-club" className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Visual Frame left */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-72 h-72 border border-brand-border bg-brand-card rounded-2xl flex flex-col items-center justify-center p-6 text-center hover:border-brand-cyan/40 transition-colors shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.93 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="lg:col-span-5 flex justify-center"
+            >
+              <div className="relative w-72 h-72 border border-brand-border bg-brand-card rounded-2xl flex flex-col items-center justify-center p-6 text-center hover:border-brand-cyan/40 hover:scale-[1.02] transition-all duration-300 shadow-sm">
                 <EulyMascot pose="idea" size={120} className="mb-4" />
                 <span className="text-xs font-bold text-brand-blue uppercase tracking-widest block mb-1">EULIM Hub</span>
                 <span className="text-xs text-brand-blue/60 max-w-[200px]">Center of intellectual curiosity & discovery</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Description content right */}
-            <div className="lg:col-span-7 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-6"
+            >
               <div className="space-y-2">
                 <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase block">Inside the Hub</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
@@ -661,12 +667,18 @@ export default function Home() {
               <div className="border-l-4 border-brand-cyan pl-4 py-1 italic text-brand-blue font-medium text-sm">
                 &ldquo;EULIM Science Club is not just about learning, it&apos;s about creating a vibrant culture of scientific inquiry, collaboration, and innovation.&rdquo;
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Vercel-style clean grids for general pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 border border-brand-border rounded-lg overflow-hidden divide-y md:divide-y-0 md:divide-x divide-brand-border shadow-sm mt-16">
-            <div className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300"
+            >
               <div className="w-12 h-12 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-brand-cyan mb-6">
                 <Lightbulb className="w-6 h-6" />
               </div>
@@ -674,9 +686,15 @@ export default function Home() {
               <p className="text-sm text-brand-blue/70 leading-relaxed">
                 Encouraging students to look beyond standard textbooks. We host debates on theoretical breakthroughs, experimental techniques, and mathematical formulation.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300"
+            >
               <div className="w-12 h-12 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-brand-cyan mb-6">
                 <Users className="w-6 h-6" />
               </div>
@@ -684,9 +702,15 @@ export default function Home() {
               <p className="text-sm text-brand-blue/70 leading-relaxed">
                 Connecting abstract academic concepts to real-world industrial tasks. Showing how computation, physical sciences, and modeling resolve market needs.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="p-8 bg-white hover:bg-brand-card/30 transition-colors duration-300"
+            >
               <div className="w-12 h-12 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-brand-cyan mb-6">
                 <MessageSquareCode className="w-6 h-6" />
               </div>
@@ -694,35 +718,22 @@ export default function Home() {
               <p className="text-sm text-brand-blue/70 leading-relaxed">
                 Conducting talks, guest seminars, and debates with faculty coordinators to evaluate emerging scientific principles and computational models.
               </p>
-            </div>
+            </motion.div>
           </div>
 
-        </div>
-      </section>
-
-      {/* INTERACTIVE EXPERIMENT: THE QUANTUM SANDBOX */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
-            <EulyMascot pose="idea" size={70} className="mb-2 shrink-0 animate-bounce" />
-            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Live Lab Experiment</h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              The Quantum Sandbox
-            </p>
-            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
-              Explore orbital trajectories. Spawn electron nodes and observe force vectors in real-time. Drag the central proton (+) to warp space-time!
-            </p>
-          </div>
-          <div className="max-w-5xl mx-auto">
-            <QuantumSandbox />
-          </div>
         </div>
       </section>
 
       {/* SECTION 4: CLUB MILESTONES TIMELINE */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Our Timeline</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
               Club Milestones & Journey
@@ -730,7 +741,7 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               From a small student-led initiative to the epicenter of science innovation at CHRIST Delhi NCR.
             </p>
-          </div>
+          </motion.div>
 
           {/* Interactive vertical timeline */}
           <div className="relative max-w-3xl mx-auto pl-8 sm:pl-0">
@@ -740,8 +751,12 @@ export default function Home() {
             {milestones.map((milestone, idx) => {
               const isEven = idx % 2 === 0;
               return (
-                <div 
+                <motion.div 
                   key={milestone.year}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-120px" }}
+                  transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
                   className={`relative mb-12 sm:flex sm:justify-between items-start ${
                     isEven ? "sm:flex-row-reverse" : "sm:flex-row"
                   }`}
@@ -757,12 +772,12 @@ export default function Home() {
                   <div className="hidden sm:block w-[45%]" />
 
                   {/* Content block */}
-                  <div className="w-full sm:w-[45%] bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/20 transition-all duration-300">
+                  <div className="w-full sm:w-[45%] bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/20 hover:scale-[1.03] transition-all duration-300">
                     <span className="text-xs font-bold text-brand-cyan uppercase tracking-wider block mb-1">{milestone.year}</span>
                     <h3 className="text-base font-bold text-brand-blue mb-2">{milestone.title}</h3>
                     <p className="text-xs text-brand-blue/70 leading-relaxed">{milestone.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -773,7 +788,13 @@ export default function Home() {
       <section className="py-20 md:py-24 border-b border-brand-border bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-ochre/30 bg-brand-card text-brand-ochre text-xs font-semibold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
               Quantum Quest 2026
@@ -784,12 +805,18 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               Explore our thrilling &quot;Stranger Things&quot;-themed science treasure hunt spanning the entire campus.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
             
             {/* Event Description Card */}
-            <div className="lg:col-span-5 bg-brand-card border border-brand-border p-8 rounded-lg space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="lg:col-span-5 bg-brand-card border border-brand-border p-8 rounded-lg space-y-6"
+            >
               <div className="flex justify-between items-center pb-4 border-b border-brand-border">
                 <h3 className="text-base font-bold text-brand-blue">Expedition Logistics</h3>
                 <span className="text-[10px] font-bold text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded-full uppercase tracking-wider">Stranger Things theme</span>
@@ -816,30 +843,40 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 pt-4">
-                  <div className="bg-white border border-brand-border rounded p-3 text-center">
+                  <div className="bg-white border border-brand-border rounded p-3 text-center hover:scale-[1.03] transition-transform duration-300">
                     <span className="text-base block mb-0.5">🏆</span>
                     <span className="text-[10px] font-bold text-brand-blue block">1st Prize</span>
                     <span className="text-[9px] text-brand-blue/60 block">Gift Hamper & Appreciation</span>
                   </div>
-                  <div className="bg-white border border-brand-border rounded p-3 text-center">
+                  <div className="bg-white border border-brand-border rounded p-3 text-center hover:scale-[1.03] transition-transform duration-300">
                     <span className="text-base block mb-0.5">🎓</span>
                     <span className="text-[10px] font-bold text-brand-blue block">Participation</span>
                     <span className="text-[9px] text-brand-blue/60 block">E-Certificates for All</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Event Gallery */}
-            <div className="lg:col-span-7 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="lg:col-span-7 space-y-6"
+            >
               <h4 className="text-xs font-bold text-brand-blue/50 uppercase tracking-widest">Expedition Archives</h4>
               
               {/* Campuses/Quest bento photo gallery */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {quantumPhotos.slice(0, 5).map((photo) => (
-                  <div 
+                {quantumPhotos.slice(0, 5).map((photo, i) => (
+                  <motion.div 
                     key={photo.label}
-                    className={`relative rounded-lg overflow-hidden border border-brand-border h-36 group ${
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    className={`relative rounded-lg overflow-hidden border border-brand-border h-36 group hover:scale-[1.03] transition-all duration-300 ${
                       photo.span || ""
                     }`}
                   >
@@ -852,24 +889,30 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/85 via-transparent to-transparent flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-[10px] font-bold text-white tracking-wide">{photo.label}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
           {/* Collaborator logo list */}
-          <div className="border-t border-brand-border pt-10 mt-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="border-t border-brand-border pt-10 mt-10"
+          >
             <h4 className="text-[10px] font-bold text-brand-blue/40 uppercase tracking-widest text-center mb-6">Organisers & Collaborators</h4>
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              {["CIIC", "Institution&apos;s Innovation Council", "Christ Incubation Centre", "EULIM Science Club"].map((name) => (
-                <div key={name} className="px-4 py-2 border border-brand-border bg-brand-card/50 rounded text-xs font-bold text-brand-blue/60 tracking-wider">
+              {["CIIC", "Institution's Innovation Council", "Christ Incubation Centre", "EULIM Science Club"].map((name) => (
+                <div key={name} className="px-4 py-2 border border-brand-border bg-brand-card/50 rounded text-xs font-bold text-brand-blue/60 tracking-wider hover:border-brand-cyan/40 hover:scale-[1.03] transition-all duration-300">
                   {name}
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -877,7 +920,13 @@ export default function Home() {
       {/* SECTION 6: LEADERSHIP & FACULTY */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Faculty Mentorship</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
               Leadership Guiding Our Mission
@@ -885,14 +934,18 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               Meet the faculty directors and coordinators driving science engagement at Christ University NCR.
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {faculty.slice(0, 3).map((member) => (
-                <div
+              {faculty.slice(0, 3).map((member, i) => (
+                <motion.div
                   key={member.name}
-                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -911,15 +964,19 @@ export default function Home() {
                   <div className="mt-6 pt-4 border-t border-brand-border-muted">
                     <p className="text-xs text-brand-blue/50 font-medium">{member.title}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {faculty.slice(3, 5).map((member) => (
-                <div
+              {faculty.slice(3, 5).map((member, i) => (
+                <motion.div
                   key={member.name}
-                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -938,7 +995,7 @@ export default function Home() {
                   <div className="mt-6 pt-4 border-t border-brand-border-muted">
                     <p className="text-xs text-brand-blue/50 font-medium">{member.title}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -948,7 +1005,13 @@ export default function Home() {
       {/* SECTION 7: MEET THE CATALYSTS (STUDENT TEAM) */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">The Neural Network</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
               Meet the Catalysts
@@ -956,15 +1019,19 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               The student organizers and leaders coordinating club activities and academic partnerships.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {studentTeam.map((member) => {
+            {studentTeam.map((member, i) => {
               const IconComp = member.icon;
               return (
-                <div 
+                <motion.div 
                   key={member.name}
-                  className="bg-brand-card border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/40 transition-all duration-300 text-center flex flex-col items-center group"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: "easeOut" }}
+                  className="bg-brand-card border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/40 hover:scale-[1.03] transition-all duration-300 text-center flex flex-col items-center group animate-fade-in"
                 >
                   {/* Styled avatar box */}
                   <div className="mb-4 w-20 h-20 rounded-full border-2 border-brand-border bg-white flex items-center justify-center text-brand-cyan group-hover:border-brand-cyan/40 transition-colors relative overflow-hidden">
@@ -977,7 +1044,7 @@ export default function Home() {
                   <span className="mt-3 text-[10px] font-bold text-brand-ochre bg-brand-ochre/10 px-2 py-0.5 rounded">
                     {member.tag}
                   </span>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -988,7 +1055,13 @@ export default function Home() {
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center"
+          >
             <EulyMascot pose="partner" size={90} className="mb-4 shrink-0" />
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Partner With Us</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
@@ -997,17 +1070,21 @@ export default function Home() {
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed max-w-2xl mx-auto">
               Fuel the next generation of scientific minds. Sponsor EULIM Science Club events and gain visibility among 500+ students, faculty, and industry professionals.
             </p>
-          </div>
+          </motion.div>
 
           {/* Sponsorship Tiers selection grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            {sponsorTiers.map((tier) => {
+            {sponsorTiers.map((tier, i) => {
               const isSelected = sponsorForm.sponsorshipTier === tier.name;
               return (
-                <div
+                <motion.div
                   key={tier.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
                   onClick={() => selectTier(tier.name)}
-                  className={`bg-white border rounded-lg p-6 text-center cursor-pointer transition-all duration-300 ${
+                  className={`bg-white border rounded-lg p-6 text-center cursor-pointer hover:scale-[1.03] transition-all duration-300 ${
                     isSelected 
                       ? "border-brand-cyan bg-brand-cyan/5 shadow-md shadow-brand-cyan/5" 
                       : "border-brand-border hover:border-brand-cyan/40 hover:shadow-sm"
@@ -1023,13 +1100,19 @@ export default function Home() {
                       {isSelected ? "Selected" : "Select Tier"}
                     </span>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
           {/* Stateful Proposal Form */}
-          <div className="bg-white border border-brand-border p-8 rounded-lg max-w-2xl mx-auto shadow-sm">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="bg-white border border-brand-border p-8 rounded-lg max-w-2xl mx-auto shadow-sm"
+          >
             <h3 className="text-base font-bold text-brand-blue mb-6 text-center">Submit a Sponsorship Proposal</h3>
             
             <form onSubmit={handleSponsorSubmit} className="space-y-4">
@@ -1108,14 +1191,14 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-md transition-all active:scale-95 disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
                 >
                   <Send className="w-3.5 h-3.5" />
                   {isSubmitting ? "Submitting Proposal..." : "Submit Sponsorship Proposal"}
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -1132,6 +1215,7 @@ export default function Home() {
       )}
     </div>
   );
+
 }
 
 // Faculty message constant used in page

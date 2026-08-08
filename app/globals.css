@@ -61,128 +61,19 @@ body {
   }
 }
 
+
 /* ==========================================
-   MAD SCIENCE MODE (Cyberpunk Lab Override)
+   INTERACTION ANIMATION UTILITIES
    ========================================== */
-.mad-science {
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  
-  --color-brand-bg: #09090b;
-  --color-brand-card: #18181b;
-  --color-brand-blue: #f4f4f5;
-  --color-brand-cyan: #d946ef;
-  --color-brand-ochre: #a855f7;
-  --color-brand-border: #27272a;
-  --color-brand-border-muted: #3f3f46;
+@utility hover-scale {
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+@utility active-shrink {
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
-.mad-science body {
-  background-color: var(--color-brand-bg) !important;
-  color: var(--color-brand-blue) !important;
-  background-image: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 80%) !important;
-}
-
-/* Force light components to adapt to dark theme in Mad Mode */
-.mad-science header,
-.mad-science footer,
-.mad-science section {
-  background-color: transparent !important;
-  border-color: #27272a !important;
-}
-
-.mad-science .bg-white,
-.mad-science .bg-brand-card,
-.mad-science .bg-brand-card\/20,
-.mad-science .bg-brand-card\/30,
-.mad-science .bg-brand-card\/40,
-.mad-science .bg-brand-card\/50,
-.mad-science .bg-brand-card\/80 {
-  background-color: #18181b !important;
-  border-color: #27272a !important;
-}
-
-.mad-science h1,
-.mad-science h2,
-.mad-science h3,
-.mad-science h4,
-.mad-science span,
-.mad-science p,
-.mad-science li,
-.mad-science label,
-.mad-science a {
-  color: #e4e4e7 !important;
-}
-
-/* Specific text overrides */
-.mad-science .text-brand-blue,
-.mad-science .text-brand-blue\/70,
-.mad-science .text-brand-blue\/80,
-.mad-science .text-brand-blue\/60,
-.mad-science .text-brand-blue\/40 {
-  color: #a1a1aa !important;
-}
-
-.mad-science .text-brand-cyan {
-  color: #d946ef !important;
-}
-
-.mad-science .text-brand-ochre {
-  color: #a855f7 !important;
-}
-
-/* Button & Border neon overrides */
-.mad-science .bg-brand-cyan {
-  background-color: #d946ef !important;
-  box-shadow: 0 0 10px rgba(217, 70, 239, 0.4) !important;
-}
-
-.mad-science .bg-brand-cyan:hover {
-  background-color: #c084fc !important;
-  box-shadow: 0 0 15px rgba(217, 70, 239, 0.6) !important;
-}
-
-.mad-science .bg-brand-blue {
-  background-color: #27272a !important;
-  border-color: #3f3f46 !important;
-}
-
-.mad-science .border-brand-cyan\/30 {
-  border-color: rgba(217, 70, 239, 0.4) !important;
-}
-
-.mad-science .border-brand-ochre\/30 {
-  border-color: rgba(168, 85, 247, 0.4) !important;
-}
-
-/* Card hovering neon glows */
-.mad-science .hover\:border-brand-cyan\/40:hover,
-.mad-science .hover\:border-brand-cyan\/30:hover,
-.mad-science .hover\:border-brand-cyan\/20:hover {
-  border-color: #d946ef !important;
-  box-shadow: 0 0 15px rgba(217, 70, 239, 0.25) !important;
-}
-
-.mad-science input,
-.mad-science textarea {
-  background-color: #09090b !important;
-  border-color: #27272a !important;
-  color: #f4f4f5 !important;
-}
-
-.mad-science input:focus,
-.mad-science textarea:focus {
-  border-color: #d946ef !important;
-}
-
-/* Custom scrollbar in Mad Mode */
-.mad-science ::-webkit-scrollbar-track {
-  background: #09090b !important;
-}
-.mad-science ::-webkit-scrollbar-thumb {
-  background: #27272a !important;
-}
-.mad-science ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46 !important;
-}
 

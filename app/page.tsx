@@ -744,9 +744,9 @@ export default function Home() {
           </motion.div>
 
           {/* Interactive vertical timeline */}
-          <div className="relative max-w-3xl mx-auto pl-8 sm:pl-0">
+          <div className="relative max-w-3xl mx-auto">
             {/* Center line (on desktop) */}
-            <div className="absolute left-0 sm:left-1/2 top-0 bottom-0 w-0.5 bg-brand-border sm:-translate-x-0.5" />
+            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-brand-border sm:-translate-x-0.5" />
 
             {milestones.map((milestone, idx) => {
               const isEven = idx % 2 === 0;
@@ -757,13 +757,13 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-120px" }}
                   transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-                  className={`relative mb-12 sm:flex sm:justify-between items-start ${
+                  className={`relative mb-12 sm:flex sm:justify-between items-start pl-10 sm:pl-0 ${
                     isEven ? "sm:flex-row-reverse" : "sm:flex-row"
                   }`}
                 >
                   {/* Timeline dot */}
                   <div 
-                    className={`absolute left-0 sm:left-1/2 w-4 h-4 rounded-full border-4 border-white -translate-x-2 sm:-translate-x-2 mt-1 z-10 shadow-sm ${
+                    className={`absolute left-4 sm:left-1/2 w-4 h-4 rounded-full border-4 border-white -translate-x-2 sm:-translate-x-2 mt-1 z-10 shadow-sm ${
                       isEven ? "bg-brand-cyan" : "bg-brand-ochre"
                     }`} 
                   />

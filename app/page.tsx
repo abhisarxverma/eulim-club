@@ -210,7 +210,7 @@ export default function Home() {
       {/* HEADLINE NEWS TICKER BANNER (Scrolls every 10 seconds) */}
       <div className="w-full bg-gradient-to-r from-brand-cyan/15 via-brand-cyan/25 to-brand-cyan/15 border-b border-brand-border py-3 flex items-center overflow-hidden transition-all duration-300 relative shadow-sm select-none">
         <div className="max-w-5xl mx-auto px-4 w-full flex justify-center text-center">
-          <div className="relative h-6 w-full overflow-hidden flex items-center justify-center">
+          <div className="relative h-12 sm:h-6 w-full overflow-hidden flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentHeadlineIdx}
@@ -218,11 +218,11 @@ export default function Home() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="absolute text-xs sm:text-sm font-extrabold text-brand-blue tracking-wide w-full text-center flex items-center justify-center gap-2"
+                className="absolute text-[10px] sm:text-xs md:text-sm font-extrabold text-brand-blue tracking-wide w-full text-center flex items-center justify-center gap-2 px-4"
               >
-                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0" />
+                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0 hidden sm:block" />
                 <span>{headlines[currentHeadlineIdx]}</span>
-                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0" />
+                <Sparkles className="w-3.5 h-3.5 text-brand-ochre fill-brand-ochre/30 animate-pulse shrink-0 hidden sm:block" />
               </motion.p>
             </AnimatePresence>
           </div>

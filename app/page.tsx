@@ -205,7 +205,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="relative min-h-screen bg-brand-bg">
       
       {/* HEADLINE NEWS TICKER BANNER (Scrolls every 10 seconds) */}
       <div className="w-full bg-gradient-to-r from-brand-cyan/15 via-brand-cyan/25 to-brand-cyan/15 border-b border-brand-border py-3 flex items-center overflow-hidden transition-all duration-300 relative shadow-sm select-none">
@@ -230,7 +230,7 @@ export default function Home() {
       </div>
 
       {/* SECTION 1: SPLIT HERO */}
-      <section className="relative flex flex-col items-center justify-center pt-16 pb-20 md:pt-20 md:pb-24 border-b border-brand-border overflow-hidden min-h-[85vh]">
+      <section className="relative flex flex-col items-center justify-center pt-16 pb-20 md:pt-20 md:pb-24 border-b border-brand-border overflow-hidden min-h-[85vh] bg-hero-light">
         <ParticleCanvas />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
@@ -376,7 +376,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: EULIM LABS & EXHIBITIONS GALLERY */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-white">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
@@ -506,7 +506,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3: UNIVERSITY PORTFOLIO */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/20">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -618,7 +618,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 4: THE EULIM SCIENCE CLUB ABOUT */}
-      <section id="about-club" className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-16">
+      <section id="about-club" className="py-20 md:py-24 border-b border-brand-border bg-brand-card scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -725,7 +725,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 4: CLUB MILESTONES TIMELINE */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/30">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -785,7 +785,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 5: INTERACTIVE EVENT: ENIGMA EXPEDITION */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-white">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
@@ -918,7 +918,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 6: LEADERSHIP & FACULTY */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/40">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1003,7 +1003,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 7: MEET THE CATALYSTS (STUDENT TEAM) */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-white">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1052,7 +1052,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 8: THE FUSION CHAMBER (SPONSORSHIP US) */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card/20">
+      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 

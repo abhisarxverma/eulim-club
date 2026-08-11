@@ -169,7 +169,7 @@ export default function ExhibitionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-bg">
       {/* Dynamic Sub-Navbar - Apple Design style */}
       <div className="sticky top-16 z-40 w-full bg-brand-card/90 backdrop-blur-md border-b border-brand-border h-14 flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <span className="text-sm font-bold text-brand-blue">Science Exhibition 2025</span>
@@ -184,7 +184,7 @@ export default function ExhibitionPage() {
       </div>
 
       {/* Hero Header */}
-      <section className="relative bg-white pt-16 pb-20 md:py-24 border-b border-brand-border">
+      <section className="relative bg-hero-light pt-16 pb-20 md:py-24 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -268,7 +268,7 @@ export default function ExhibitionPage() {
       </section>
 
       {/* Categories Grid Section */}
-      <section id="categories" className="py-20 md:py-24 border-b border-brand-border bg-brand-card/30 scroll-mt-24">
+      <section id="categories" className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">
@@ -321,7 +321,7 @@ export default function ExhibitionPage() {
       </section>
 
       {/* Catalyst Chronicles Gallery Section */}
-      <section id="gallery" className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-24">
+      <section id="gallery" className="py-20 md:py-24 border-b border-brand-border bg-brand-card scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Expedition Archives</h2>
@@ -379,7 +379,7 @@ export default function ExhibitionPage() {
       </section>
 
       {/* Guidelines Section */}
-      <section id="guidelines" className="py-20 md:py-24 border-b border-brand-border bg-brand-card/20 scroll-mt-24">
+      <section id="guidelines" className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12 flex flex-col items-center">
             <EulyMascot pose="idea" size={70} className="mb-2 shrink-0" />
@@ -431,7 +431,7 @@ export default function ExhibitionPage() {
       </section>
 
       {/* Registration Section */}
-      <section id="register" className="py-20 md:py-24 bg-white scroll-mt-24">
+      <section id="register" className="py-20 md:py-24 bg-brand-card scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="space-y-4 mb-10 flex flex-col items-center">
             <EulyMascot pose="support" size={90} className="mb-2 shrink-0 animate-bounce" />

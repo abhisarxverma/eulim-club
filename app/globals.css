@@ -2,18 +2,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a2540;
+  --background: #f5f7fb;
+  --foreground: #0e2036;
 }
 
 @theme {
-  --color-brand-bg: #ffffff;
-  --color-brand-card: #f8fafc;
-  --color-brand-blue: #0a2540;
-  --color-brand-cyan: #0284c7;
-  --color-brand-ochre: #d97706;
-  --color-brand-border: #e2e8f0;
-  --color-brand-border-muted: #f1f5f9;
+  --color-brand-bg: #f5f7fb;
+  --color-brand-bg-muted: #eef2f9;
+  --color-brand-card: #ffffff;
+  --color-brand-blue: #0e2036;
+  --color-brand-cyan: #3d5a80;
+  --color-brand-cyan-soft: #4d6d94;
+  --color-brand-ochre: #d49a17;
+  --color-brand-border: rgba(14, 32, 54, 0.12);
+  --color-brand-border-muted: rgba(14, 32, 54, 0.06);
   
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Inter', system-ui, -apple-system, sans-serif;
@@ -59,6 +61,12 @@ body {
   &:active {
     transform: scale(0.95);
   }
+}
+
+@utility bg-hero-light {
+  background-image: radial-gradient(120% 90% at 80% -10%, rgba(255, 122, 51, 0.12), transparent 55%),
+    radial-gradient(90% 80% at 10% 110%, rgba(59, 111, 214, 0.14), transparent 60%),
+    linear-gradient(160deg, #eef2f9, #e4ebf8 60%, #dce6f5);
 }
 
 

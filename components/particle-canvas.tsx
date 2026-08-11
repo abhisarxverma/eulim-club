@@ -115,7 +115,7 @@ export function ParticleCanvas() {
         // Draw particle node
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(2, 132, 199, 0.4)"; // Electric Cyan at 0.4 opacity
+        ctx.fillStyle = "rgba(61, 90, 128, 0.35)"; // Steel Blue at 0.35 opacity
         ctx.fill();
       });
 
@@ -134,7 +134,7 @@ export function ParticleCanvas() {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(2, 132, 199, ${alpha})`;
+            ctx.strokeStyle = `rgba(61, 90, 128, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }

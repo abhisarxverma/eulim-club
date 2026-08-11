@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-brand-blue font-sans selection:bg-brand-cyan/20 selection:text-brand-blue">
+      <body className="min-h-full flex flex-col bg-brand-bg text-brand-blue font-sans selection:bg-brand-cyan/20 selection:text-brand-blue">
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />

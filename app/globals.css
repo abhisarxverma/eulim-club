@@ -26,6 +26,10 @@
   --radius-lg: 18px;
   --radius-pill: 9999px;
   --radius-full: 9999px;
+  
+  --shadow-sm: 0 4px 12px -2px rgba(14, 32, 54, 0.05), 0 1px 3px rgba(14, 32, 54, 0.02);
+  --shadow-md: 0 16px 36px -12px rgba(14, 32, 54, 0.12), 0 4px 12px -2px rgba(14, 32, 54, 0.04);
+  --shadow-lg: 0 28px 56px -16px rgba(14, 32, 54, 0.18), 0 8px 24px -4px rgba(14, 32, 54, 0.06);
 }
 
 body {

@@ -593,7 +593,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: "easeOut" }}
-                    className={`bg-white border border-brand-border rounded-lg p-5 flex flex-col justify-between hover:border-brand-cyan/30 hover:scale-[1.02] transition-all duration-300 ${
+                    className={`bg-white border border-brand-border rounded-lg p-5 flex flex-col justify-between hover:border-brand-cyan/30 hover:scale-[1.02] shadow-sm hover:shadow-md transition-all duration-300 ${
                       isNcr ? "lg:col-span-2 lg:row-span-2 border-brand-cyan bg-brand-card/40" : "lg:col-span-2"
                     }`}
                   >
@@ -630,7 +630,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="lg:col-span-5 flex justify-center"
             >
-              <div className="relative w-72 h-72 border border-brand-border bg-brand-card rounded-2xl flex flex-col items-center justify-center p-6 text-center hover:border-brand-cyan/40 hover:scale-[1.02] transition-all duration-300 shadow-sm">
+              <div className="relative w-72 h-72 border border-brand-border bg-brand-card rounded-2xl flex flex-col items-center justify-center p-6 text-center hover:border-brand-cyan/40 hover:scale-[1.02] transition-all duration-300 shadow-sm hover:shadow-md">
                 <EulyMascot pose="idea" size={120} className="mb-4" />
                 <span className="text-xs font-bold text-brand-blue uppercase tracking-widest block mb-1">EULIM Hub</span>
                 <span className="text-xs text-brand-blue/60 max-w-[200px]">Center of intellectual curiosity & discovery</span>
@@ -772,7 +772,7 @@ export default function Home() {
                   <div className="hidden sm:block w-[45%]" />
 
                   {/* Content block */}
-                  <div className="w-full sm:w-[45%] bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:border-brand-cyan/20 hover:scale-[1.03] transition-all duration-300">
+                  <div className="w-full sm:w-[45%] bg-brand-card border border-brand-border p-6 rounded-lg shadow-sm hover:shadow-md hover:border-brand-cyan/20 hover:scale-[1.03] transition-all duration-300">
                     <span className="text-xs font-bold text-brand-cyan uppercase tracking-wider block mb-1">{milestone.year}</span>
                     <h3 className="text-base font-bold text-brand-blue mb-2">{milestone.title}</h3>
                     <p className="text-xs text-brand-blue/70 leading-relaxed">{milestone.desc}</p>
@@ -815,7 +815,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="lg:col-span-5 bg-brand-card border border-brand-border p-8 rounded-lg space-y-6"
+              className="lg:col-span-5 bg-brand-card border border-brand-border p-8 rounded-lg space-y-6 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <div className="flex justify-between items-center pb-4 border-b border-brand-border">
                 <h3 className="text-base font-bold text-brand-blue">Expedition Logistics</h3>
@@ -843,12 +843,12 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 pt-4">
-                  <div className="bg-white border border-brand-border rounded p-3 text-center hover:scale-[1.03] transition-transform duration-300">
+                  <div className="bg-brand-card border border-brand-border rounded p-3 text-center shadow-sm hover:shadow-md hover:scale-[1.03] transition-all duration-300">
                     <span className="text-base block mb-0.5">🏆</span>
                     <span className="text-[10px] font-bold text-brand-blue block">1st Prize</span>
                     <span className="text-[9px] text-brand-blue/60 block">Gift Hamper & Appreciation</span>
                   </div>
-                  <div className="bg-white border border-brand-border rounded p-3 text-center hover:scale-[1.03] transition-transform duration-300">
+                  <div className="bg-brand-card border border-brand-border rounded p-3 text-center shadow-sm hover:shadow-md hover:scale-[1.03] transition-all duration-300">
                     <span className="text-base block mb-0.5">🎓</span>
                     <span className="text-[10px] font-bold text-brand-blue block">Participation</span>
                     <span className="text-[9px] text-brand-blue/60 block">E-Certificates for All</span>
@@ -945,7 +945,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
+                  className="bg-brand-card border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -976,7 +976,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                  className="bg-white border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
+                  className="bg-brand-card border border-brand-border p-6 rounded-lg shadow-sm hover:scale-[1.02] hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -1084,10 +1084,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
                   onClick={() => selectTier(tier.name)}
-                  className={`bg-white border rounded-lg p-6 text-center cursor-pointer hover:scale-[1.03] transition-all duration-300 ${
+                  className={`bg-brand-card border rounded-lg p-6 text-center cursor-pointer hover:scale-[1.03] transition-all duration-300 ${
                     isSelected 
                       ? "border-brand-cyan bg-brand-cyan/5 shadow-md shadow-brand-cyan/5" 
-                      : "border-brand-border hover:border-brand-cyan/40 hover:shadow-sm"
+                      : "border-brand-border hover:border-brand-cyan/40 shadow-sm hover:shadow-md"
                   }`}
                 >
                   <span className="text-2xl mb-2.5 block">{tier.icon}</span>

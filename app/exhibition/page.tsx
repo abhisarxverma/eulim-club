@@ -286,7 +286,7 @@ export default function ExhibitionPage() {
             {categories.map((cat, idx) => (
               <div 
                 key={cat.title} 
-                className="bg-white border border-brand-border p-8 rounded-lg shadow-sm hover:border-brand-cyan/40 transition-all duration-300 flex flex-col md:flex-row gap-6 items-start animate-fade-in"
+                className="bg-brand-card border border-brand-border p-8 rounded-lg shadow-sm hover:shadow-md hover:border-brand-cyan/40 transition-all duration-300 flex flex-col md:flex-row gap-6 items-start animate-fade-in"
               >
                 <div className="shrink-0 flex items-center justify-center p-3 bg-brand-card border border-brand-border rounded-lg">
                   {cat.svg}
@@ -392,11 +392,11 @@ export default function ExhibitionPage() {
           </div>
 
           {/* Accordion Component */}
-          <div className="border border-brand-border rounded-lg overflow-hidden divide-y divide-brand-border bg-white shadow-sm">
+          <div className="border border-brand-border rounded-lg overflow-hidden divide-y divide-brand-border bg-brand-card shadow-sm hover:shadow-md transition-all duration-300">
             {guidelines.map((item) => {
               const isOpen = activeAccordion === item.id;
               return (
-                <div key={item.id} className="bg-white">
+                <div key={item.id} className="bg-brand-card">
                   <button
                     onClick={() => toggleAccordion(item.id)}
                     className="w-full flex justify-between items-center p-5 text-left text-sm font-semibold text-brand-blue hover:text-brand-cyan transition-colors"
@@ -446,7 +446,7 @@ export default function ExhibitionPage() {
             </p>
           </div>
 
-          <div className="bg-brand-card border border-brand-border p-8 rounded-lg max-w-sm mx-auto shadow-md flex flex-col items-center gap-6">
+          <div className="bg-brand-card border border-brand-border p-8 rounded-lg max-w-sm mx-auto shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col items-center gap-6">
             {/* Styled SVG QR Code Placeholder */}
             <div className="relative w-48 h-48 bg-white border border-brand-border rounded-lg flex items-center justify-center p-4">
               <svg viewBox="0 0 100 100" className="w-full h-full text-brand-blue">

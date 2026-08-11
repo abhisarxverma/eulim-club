@@ -6,7 +6,6 @@ import {
   Calendar, 
   Clock, 
   MapPin, 
-  Terminal, 
   Sparkles, 
   Trophy, 
   Play, 
@@ -20,12 +19,6 @@ import {
 
 export default function QuestPage() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [terminalInput, setTerminalInput] = useState("");
-  const [terminalLog, setTerminalLog] = useState<string[]>([
-    "SYS_INIT: Establishing connection to EULIM core...",
-    "PORTAL_STATUS: Concluded. Archive signal online.",
-    "ENTER ACCESS CODE TO REVEAL PAST CLUES..."
-  ]);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   // Photos from previous events
@@ -43,33 +36,6 @@ export default function QuestPage() {
     { id: "vid-2", title: "Enigma Expedition Highlights", duration: "4:20", category: "Aftermovie", placeholder: "https://live.staticflickr.com/65535/54845338505_000ca74e69_c.jpg" },
     { id: "vid-3", title: "Clue Decryption Guide (CIIC)", duration: "2:50", category: "Tutorial", placeholder: "https://live.staticflickr.com/65535/55146839093_fb82993af7_c.jpg" }
   ];
-
-  // Interactive mock codes
-  const mockClues: { [key: string]: string } = {
-    "EULIM": "🔓 ARCHIVE ACCESS: 'Limit of f(x) as x approaches infinity matches the number of sectors in the Upside Down. Seek the green board under the central staircase.'",
-    "STRANGER": "🔓 ARCHIVE ACCESS: 'Eleven's favorite coordinate code: 011-045-201. Search the chemistry lab corridor window pane.'",
-    "CIIC": "🔓 ARCHIVE ACCESS: 'Hardware signal established. Go to the Innovation Incubator, present Euly Mascot wink pose to receive the smart card.'",
-    "DEMOGORGON": "⚠️ DANGER: Portal spike detected! 'Volunteers in red badges are watchers. Do not consult them during active decryption.'",
-  };
-
-  const handleTerminalSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const input = terminalInput.trim().toUpperCase();
-    if (!input) return;
-
-    let response = "❌ ACCESS DENIED: Code not matching archive index. Try 'EULIM', 'STRANGER', or 'CIIC'.";
-    if (mockClues[input]) {
-      response = mockClues[input];
-    }
-
-    setTerminalLog(prev => [
-      ...prev,
-      `> ENTER_CODE: ${input}`,
-      response,
-      ""
-    ]);
-    setTerminalInput("");
-  };
 
   const handleNextSlide = () => {
     setActiveSlide(prev => (prev + 1) % questPhotos.length);
@@ -99,7 +65,7 @@ export default function QuestPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left: Typography */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div className="lg:col-span-5 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-200 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest animate-pulse">
                 <Radio className="w-3.5 h-3.5 text-red-600" />
                 Stranger Things Theme • Concluded Event
@@ -119,11 +85,11 @@ export default function QuestPage() {
 
               <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
                 <a 
-                  href="#terminal" 
+                  href="#gallery" 
                   className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold text-white bg-red-600 hover:bg-red-750 rounded-md shadow-md shadow-red-900/10 transition-all hover:scale-105 active:scale-95 border border-red-500/20"
                 >
-                  <Terminal className="w-4 h-4" />
-                  Try Archive Decryptor
+                  <Sparkles className="w-4 h-4" />
+                  View Event Gallery
                 </a>
                 <a 
                   href="#rules" 
@@ -134,55 +100,21 @@ export default function QuestPage() {
               </div>
             </div>
 
-            {/* Right: Retro Terminal / CRT Dashboard (Black accent frame) */}
-            <div className="lg:col-span-5" id="terminal">
+            {/* Right: Enigma Hero Image with Red Shadow Glow */}
+            <div className="lg:col-span-7">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="bg-[#0e0d0f] border-2 border-red-950/80 rounded-lg p-5 shadow-2xl relative overflow-hidden"
+                className="relative rounded-xl overflow-hidden border-2 border-red-900/60 shadow-[0_0_30px_rgba(220,38,38,0.25)] hover:shadow-[0_0_40px_rgba(220,38,38,0.4)] transition-all duration-500 bg-[#0e0d0f]"
               >
-                {/* CRT Screen Scanline effect */}
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-red-950/5 to-transparent bg-[size:100%_4px] opacity-25" />
-                
-                {/* Header buttons */}
-                <div className="flex items-center justify-between pb-3 border-b border-red-950/40 mb-4">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-800" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-gray-800" />
-                  </div>
-                  <span className="text-[10px] font-bold text-red-500 font-mono tracking-widest uppercase">EULIM_SYS_V2.06</span>
-                </div>
-
-                {/* Simulated Screen Log */}
-                <div className="h-44 overflow-y-auto bg-[#040405] p-3 rounded font-mono text-[10px] text-red-400/90 space-y-1.5 scrollbar-thin">
-                  {terminalLog.map((log, idx) => (
-                    <p key={idx} className={log.includes("ARCHIVE ACCESS") ? "text-green-400" : log.includes("DANGER") ? "text-yellow-500" : ""}>
-                      {log}
-                    </p>
-                  ))}
-                </div>
-
-                {/* Input prompt */}
-                <form onSubmit={handleTerminalSubmit} className="mt-4 flex gap-2">
-                  <input
-                    type="text"
-                    placeholder="Enter Decryption Code... (e.g. EULIM)"
-                    className="flex-1 bg-black border border-red-900/60 rounded px-3 py-2 text-xs text-red-400 outline-none focus:border-red-500 font-mono placeholder:text-red-950/30 uppercase"
-                    value={terminalInput}
-                    onChange={(e) => setTerminalInput(e.target.value)}
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-red-950/80 hover:bg-red-600 text-red-500 hover:text-white border border-red-600/40 hover:border-red-600 rounded text-xs font-bold transition-all active:scale-95"
-                  >
-                    Decrypt
-                  </button>
-                </form>
-                <div className="mt-2 text-[9px] text-gray-500 text-center font-mono">
-                  * Hints: <span className="text-red-800">EULIM</span>, <span className="text-red-800">STRANGER</span>, <span className="text-red-800">CIIC</span>, <span className="text-red-800">DEMOGORGON</span>
-                </div>
+                <img 
+                  src="/enigma_hero_image.jpg" 
+                  alt="Enigma Expedition Hero" 
+                  className="w-full h-auto object-cover rounded-lg aspect-[16/10] sm:aspect-[16/9]"
+                />
+                {/* Subtle Upside Down Ambient Vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               </motion.div>
             </div>
 
@@ -232,7 +164,7 @@ export default function QuestPage() {
       </section>
 
       {/* ELABORATIVE EXPEDITION ARCHIVES (CAROUSEL - White Section, Black slider frame) */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-white z-10 relative">
+      <section id="gallery" className="py-20 md:py-24 border-b border-brand-border bg-white z-10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16">

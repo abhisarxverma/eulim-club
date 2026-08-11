@@ -495,60 +495,8 @@ export default function ExhibitionPage() {
         </div>
       </section>
 
-      {/* Guidelines Section */}
-      <section id="guidelines" className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12 flex flex-col items-center">
-            <EulyMascot pose="idea" size={70} className="mb-2 shrink-0" />
-            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3 block">
-              Official Regulations
-            </span>
-            <h2 className="text-3xl font-extrabold text-brand-blue tracking-tight font-display">
-              Exhibition Guidelines & FAQs
-            </h2>
-          </div>
-
-          {/* Accordion Component */}
-          <div className="border border-brand-border rounded-lg overflow-hidden divide-y divide-brand-border bg-brand-card shadow-sm hover:shadow-md transition-all duration-300">
-            {guidelines.map((item) => {
-              const isOpen = activeAccordion === item.id;
-              return (
-                <div key={item.id} className="bg-brand-card">
-                  <button
-                    onClick={() => toggleAccordion(item.id)}
-                    className="w-full flex justify-between items-center p-5 text-left text-sm font-semibold text-brand-blue hover:text-brand-cyan transition-colors"
-                  >
-                    <span>{item.title}</span>
-                    <ChevronDown 
-                      className={`w-4 h-4 transition-transform duration-300 text-brand-blue/50 ${
-                        isOpen ? "transform rotate-180 text-brand-cyan" : ""
-                      }`} 
-                    />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0 }}
-                        animate={{ height: "auto" }}
-                        exit={{ height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="p-5 border-t border-brand-border-muted bg-brand-card/50">
-                          {item.content}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Registration Section */}
-      <section id="register" className="py-20 md:py-24 bg-brand-card scroll-mt-24">
+      {/* Registration Section (placed above Guidelines) */}
+      <section id="register" className="py-20 md:py-24 bg-brand-card scroll-mt-24 border-b border-brand-border">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="space-y-4 mb-10 flex flex-col items-center">
             <EulyMascot pose="support" size={90} className="mb-2 shrink-0 animate-bounce" />
@@ -556,7 +504,7 @@ export default function ExhibitionPage() {
               Secure Your Slot
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              Registration & Abstract Submission
+              Register Now
             </h2>
             <p className="text-sm text-brand-blue/70 max-w-xl mx-auto leading-relaxed">
               Complete your team registration by scanning the QR code or clicking the direct Google Form link below.
@@ -625,7 +573,7 @@ export default function ExhibitionPage() {
               </a>
             </div>
 
-            <div className="w-full pt-4 border-t border-brand-border flex flex-col gap-3">
+            <div className="w-full pt-4 border-t border-brand-border">
               <a 
                 href="https://forms.gle/eulimExhibition2025Registration"
                 target="_blank"
@@ -635,29 +583,6 @@ export default function ExhibitionPage() {
                 Open Google Registration Form
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
-
-              <div className="flex gap-3">
-                <a
-                  href="#download-form"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert("Downloading registration form template (PDF)...");
-                  }}
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-semibold text-brand-blue bg-white hover:bg-brand-bg-muted border border-brand-border rounded-md transition-all active:scale-95"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  PDF Template
-                </a>
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText("https://forms.gle/eulimExhibition2025Registration");
-                    alert("Link copied to clipboard! Share it with your teammates.");
-                  }}
-                  className="flex-1 inline-flex items-center justify-center px-3 py-2.5 text-xs font-semibold text-brand-blue bg-white hover:bg-brand-bg-muted border border-brand-border rounded-md transition-all active:scale-95"
-                >
-                  Share Link
-                </button>
-              </div>
             </div>
           </div>
 
@@ -676,6 +601,58 @@ export default function ExhibitionPage() {
               <HelpCircle className="w-4 h-4 text-brand-cyan" />
               Certificate of Presentation
             </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Guidelines Section (placed below Registration) */}
+      <section id="guidelines" className="py-20 md:py-24 bg-brand-bg-muted scroll-mt-24">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12 flex flex-col items-center">
+            <EulyMascot pose="idea" size={70} className="mb-2 shrink-0" />
+            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3 block">
+              Official Regulations
+            </span>
+            <h2 className="text-3xl font-extrabold text-brand-blue tracking-tight font-display">
+              Exhibition Guidelines & FAQs
+            </h2>
+          </div>
+
+          {/* Accordion Component */}
+          <div className="border border-brand-border rounded-lg overflow-hidden divide-y divide-brand-border bg-brand-card shadow-sm hover:shadow-md transition-all duration-300">
+            {guidelines.map((item) => {
+              const isOpen = activeAccordion === item.id;
+              return (
+                <div key={item.id} className="bg-brand-card">
+                  <button
+                    onClick={() => toggleAccordion(item.id)}
+                    className="w-full flex justify-between items-center p-5 text-left text-sm font-semibold text-brand-blue hover:text-brand-cyan transition-colors"
+                  >
+                    <span>{item.title}</span>
+                    <ChevronDown 
+                      className={`w-4 h-4 transition-transform duration-300 text-brand-blue/50 ${
+                        isOpen ? "transform rotate-180 text-brand-cyan" : ""
+                      }`} 
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 border-t border-brand-border-muted bg-brand-card/50">
+                          {item.content}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

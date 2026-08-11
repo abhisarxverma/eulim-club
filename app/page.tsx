@@ -901,6 +901,25 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Floating Action Button (FAB) for Exhibition */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.5, type: "spring" }}
+        className="fixed bottom-6 right-6 z-50 pointer-events-auto"
+      >
+        <Link 
+          href="/exhibition"
+          className="relative flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-brand-cyan to-brand-blue text-white shadow-xl hover:shadow-2xl border border-brand-cyan/20 group hover:scale-105 active:scale-95 transition-all duration-300"
+        >
+          {/* Subtle Outer Pulsing Ring */}
+          <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-brand-cyan to-brand-blue opacity-50 group-hover:opacity-75 blur-sm animate-pulse z-0 pointer-events-none" />
+          
+          <Sparkles className="w-4 h-4 text-white relative z-10 animate-spin" style={{ animationDuration: "10s" }} />
+          <span className="text-xs font-bold uppercase tracking-wider relative z-10">Exhibition 2025</span>
+          <span className="relative z-10 w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+        </Link>
+      </motion.div>
 
     </div>
   );

@@ -31,18 +31,6 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const [toast, setToast] = useState<{ title: string; desc: string } | null>(null);
-  const [sponsorForm, setSponsorForm] = useState({
-    companyName: "",
-    contactPerson: "",
-    email: "",
-    phone: "",
-    website: "",
-    sponsorshipTier: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   // Ticker Banner State
   const [currentHeadlineIdx, setCurrentHeadlineIdx] = useState(0);
   const headlines = [
@@ -109,39 +97,7 @@ export default function Home() {
   }, [headlines.length, carouselSlides.length]);
 
   const triggerToast = (title: string, desc: string) => {
-    setToast({ title, desc });
-    setTimeout(() => setToast(null), 4000);
-  };
-
-  const handleSponsorSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!sponsorForm.companyName.trim() || !sponsorForm.contactPerson.trim() || !sponsorForm.email.trim()) {
-      triggerToast("Missing Fields", "Please fill in all required fields marked with *");
-      return;
-    }
-    if (!sponsorForm.email.includes("@")) {
-      triggerToast("Invalid Email", "Please enter a valid email address.");
-      return;
-    }
-    
-    setIsSubmitting(true);
-    setTimeout(() => {
-      triggerToast("Proposal Received! 🤝", "Our team will reach out to you within 48 hours.");
-      setSponsorForm({
-        companyName: "",
-        contactPerson: "",
-        email: "",
-        phone: "",
-        website: "",
-        sponsorshipTier: "",
-        message: "",
-      });
-      setIsSubmitting(false);
-    }, 1500);
-  };
-
-  const selectTier = (tierName: string) => {
-    setSponsorForm(prev => ({ ...prev, sponsorshipTier: tierName }));
+    // Left empty since toast is removed
   };
 
   const universityHighlights = [
@@ -188,11 +144,7 @@ export default function Home() {
     { label: "Group Photo", img: "https://live.staticflickr.com/65535/55147056770_f5e35dd8d8_b.jpg" },
   ];
 
-  const sponsorTiers = [
-    { name: "Platinum Catalyst", perk: "Prominent logo placement on website & display boards, stage mentions, exclusive exhibition booth, social media spotlights.", icon: "⚗️" },
-    { name: "Gold Reactor", perk: "Logo on all official banners, social media feature, booth space in Synergy Square, certificate acknowledgement.", icon: "🔬" },
-    { name: "Silver Element", perk: "Logo on website footer, digital certificates, and collective social media sponsor acknowledgement.", icon: "🧪" }
-  ];
+
 
   const handlePrevSlide = () => {
     setActiveSlide(prev => (prev - 1 + carouselSlides.length) % carouselSlides.length);
@@ -1049,168 +1001,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8: THE FUSION CHAMBER (SPONSORSHIP US) */}
-      <section className="py-20 md:py-24 border-b border-brand-border bg-brand-bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center"
-          >
-            <EulyMascot pose="partner" size={90} className="mb-4 shrink-0" />
-            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Partner With Us</h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              The Fusion Chamber
-            </p>
-            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed max-w-2xl mx-auto">
-              Fuel the next generation of scientific minds. Sponsor EULIM Science Club events and gain visibility among 500+ students, faculty, and industry professionals.
-            </p>
-          </motion.div>
-
-          {/* Sponsorship Tiers selection grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            {sponsorTiers.map((tier, i) => {
-              const isSelected = sponsorForm.sponsorshipTier === tier.name;
-              return (
-                <motion.div
-                  key={tier.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-                  onClick={() => selectTier(tier.name)}
-                  className={`bg-brand-card border rounded-lg p-6 text-center cursor-pointer hover:scale-[1.03] transition-all duration-300 ${
-                    isSelected 
-                      ? "border-brand-cyan bg-brand-cyan/5 shadow-md shadow-brand-cyan/5" 
-                      : "border-brand-border hover:border-brand-cyan/40 shadow-sm hover:shadow-md"
-                  }`}
-                >
-                  <span className="text-2xl mb-2.5 block">{tier.icon}</span>
-                  <h3 className="text-sm font-bold text-brand-blue mb-2">{tier.name}</h3>
-                  <p className="text-[11px] text-brand-blue/70 leading-relaxed">{tier.perk}</p>
-                  <div className="mt-4">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                      isSelected ? "bg-brand-cyan text-white" : "bg-brand-card text-brand-cyan"
-                    }`}>
-                      {isSelected ? "Selected" : "Select Tier"}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Stateful Proposal Form */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-white border border-brand-border p-8 rounded-lg max-w-2xl mx-auto shadow-sm"
-          >
-            <h3 className="text-base font-bold text-brand-blue mb-6 text-center">Submit a Sponsorship Proposal</h3>
-            
-            <form onSubmit={handleSponsorSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Company Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Acme Industries"
-                    className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium"
-                    value={sponsorForm.companyName}
-                    onChange={(e) => setSponsorForm(prev => ({ ...prev, companyName: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Contact Person *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Jane Smith"
-                    className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium"
-                    value={sponsorForm.contactPerson}
-                    onChange={(e) => setSponsorForm(prev => ({ ...prev, contactPerson: e.target.value }))}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="sponsor@company.com"
-                    className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium"
-                    value={sponsorForm.email}
-                    onChange={(e) => setSponsorForm(prev => ({ ...prev, email: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Phone Number</label>
-                  <input
-                    type="tel"
-                    placeholder="+91 XXXXX XXXXX"
-                    className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium"
-                    value={sponsorForm.phone}
-                    onChange={(e) => setSponsorForm(prev => ({ ...prev, phone: e.target.value }))}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Company Website</label>
-                <input
-                  type="url"
-                  placeholder="https://company.com"
-                  className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium"
-                  value={sponsorForm.website}
-                  onChange={(e) => setSponsorForm(prev => ({ ...prev, website: e.target.value }))}
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-brand-blue/80 block mb-1.5">Additional Proposal Message</label>
-                <textarea
-                  rows={4}
-                  placeholder="Introduce your brand or lay down details of your package support..."
-                  className="w-full text-xs border border-brand-border bg-brand-card rounded px-3.5 py-2.5 outline-none focus:border-brand-cyan focus:bg-white text-brand-blue font-medium resize-none"
-                  value={sponsorForm.message}
-                  onChange={(e) => setSponsorForm(prev => ({ ...prev, message: e.target.value }))}
-                />
-              </div>
-
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  {isSubmitting ? "Submitting Proposal..." : "Submit Sponsorship Proposal"}
-                </button>
-              </div>
-            </form>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* FLOAT NOTIFICATION TOAST */}
-      {toast && (
-        <div className="fixed bottom-5 right-5 z-50 bg-brand-blue border border-brand-cyan/30 text-white p-4 rounded-lg shadow-lg flex items-start gap-3 max-w-sm animate-fade-in animate-bounce">
-          <CheckCircle className="w-5 h-5 text-brand-cyan shrink-0 mt-0.5" />
-          <div>
-            <p className="font-bold text-xs">{toast.title}</p>
-            <p className="text-[10px] text-white/80 mt-1">{toast.desc}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 

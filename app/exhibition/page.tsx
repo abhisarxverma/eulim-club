@@ -197,10 +197,10 @@ export default function ExhibitionPage() {
                 <Sparkles className="w-3.5 h-3.5" />
                 Annual Flagship Event
               </span>
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-brand-blue tracking-tight leading-tight font-display">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-blue tracking-tight leading-[1.1] font-display">
                 EULIM Science Exhibition 2025
               </h1>
-              <p className="text-base sm:text-lg text-brand-blue/70 leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-brand-blue/70 leading-relaxed max-w-2xl font-normal">
                 The School of Sciences annual flagship event showcasing student projects, theoretical mathematical research, and smart hardware prototypes.
               </p>
               

@@ -105,7 +105,7 @@ export default function QuestPage() {
                 Stranger Things Theme • Concluded Event
               </span>
               
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter leading-none font-display text-brand-blue">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-brand-blue tracking-tight leading-[1.1] font-display">
                 THE ENIGMA
                 <br />
                 <span className="text-red-600 drop-shadow-[0_2px_10px_rgba(229,9,20,0.15)] uppercase tracking-wider font-extrabold">
@@ -113,7 +113,7 @@ export default function QuestPage() {
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base text-brand-blue/70 max-w-xl leading-relaxed">
+              <p className="text-base sm:text-lg text-brand-blue/70 max-w-xl leading-relaxed font-normal">
                 Step back into the Upside Down. Re-evaluate the high-level scientific and mathematical cyphers, coordinate maps, and interactive hardware portals that tested our student codebreakers across the Delhi NCR campus.
               </p>
 

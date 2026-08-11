@@ -145,19 +145,17 @@ export default function Home() {
   };
 
   const universityHighlights = [
-    { stat: "1969", title: "Founded in 1969", desc: "Established as Christ College, pioneering academic discipline and student-centric education.", color: "text-brand-ochre" },
-    { stat: "A+", title: "NAAC A+ Grade", desc: "Re-accredited with the highest grade, reflecting academic rigor and modern research facilities.", color: "text-brand-cyan" },
-    { stat: "40k+", title: "40,000+ Students", desc: "A diverse multicultural community representing 60+ countries across multiple campuses.", color: "text-brand-cyan" },
-    { stat: "2008", title: "Deemed University", desc: "Conferred University status by MHRD, Government of India for holistic educational excellence.", color: "text-brand-ochre" },
+    { stat: "2019", title: "Club Founded", desc: "Established at the School of Sciences, Delhi NCR to foster student-led scientific inquiry.", color: "text-brand-ochre" },
+    { stat: "500+", title: "Active Members", desc: "A vibrant network of students from Mathematics, Physics, Statistics, and Computer Science.", color: "text-brand-cyan" },
+    { stat: "15+", title: "Annual Events", desc: "From technical panel debates to high-stakes treasure hunts like the Enigma Expedition.", color: "text-brand-cyan" },
+    { stat: "A+", title: "Academic Synergy", desc: "Mentored by expert faculty to bridge theoretical curricula with active research models.", color: "text-brand-ochre" },
   ];
 
   const campuses = [
-    { name: "Bangalore Central Campus", desc: "The main academic block", code: "CENTRAL" },
-    { name: "Bangalore Bannerghatta Campus", desc: "Focusing on humanities & business Studies", code: "BGR" },
-    { name: "Bangalore Kengeri Campus", desc: "Engineering & architecture wing", code: "KENGERI" },
-    { name: "Bangalore Yeshwanthpur Campus", desc: "Modern multi-disciplinary block", code: "YPR" },
-    { name: "Pune Lavasa Campus", desc: "Hub for analytics & IT programs", code: "LAVASA" },
-    { name: "Delhi NCR Campus", desc: "The epicenter of science research", code: "DELHI NCR", img: "https://ncr.christuniversity.in/images/history1.png" },
+    { name: "Delhi NCR Campus", desc: "The official headquarters of EULIM Science Club, hosting flagship events at Synergy Square.", code: "DELHI NCR (HQ)" },
+    { name: "Bangalore Central Campus", desc: "Main university seat supporting cross-campus scientific research initiatives.", code: "CENTRAL" },
+    { name: "Bangalore Kengeri Campus", desc: "Collaborating on engineering, hardware design, and robotics integrations.", code: "KENGERI" },
+    { name: "Pune Lavasa Campus", desc: "Academic partner for statistics, big data analytics, and computational modeling.", code: "LAVASA" },
   ];
 
   const milestones = [
@@ -517,10 +515,10 @@ export default function Home() {
           >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Our Foundation</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              CHRIST (Deemed to be University)
+              EULIM at Christ University
             </p>
-            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
-              Rooted in educational excellence and service, guiding research across campuses.
+            <p className="mt-4 text-sm text-brand-blue/70 leading-relaxed max-w-2xl mx-auto">
+              Fostering scientific discipline, collaborative research, and academic rigor under the School of Sciences.
             </p>
           </motion.div>
 
@@ -537,8 +535,8 @@ export default function Home() {
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
                 The Vision
               </h3>
-              <p className="text-sm text-brand-blue/80 leading-relaxed">
-                Born out of the educational vision of <strong className="text-brand-blue">St Kuriakose Elias Chavara</strong>, an educationalist and social reformer of the nineteenth century in South India. He founded the first Catholic indigenous congregation, <strong className="text-brand-blue">Carmelites of Mary Immaculate (CMI)</strong>, in 1831 which administers CHRIST.
+              <p className="text-xs text-brand-blue/80 leading-relaxed">
+                Guided by the university's focus on educational excellence, the EULIM Science Club empowers students to explore deep mathematics, physics structures, statistics, and computational analytics to solve complex real-world challenges.
               </p>
             </motion.div>
             
@@ -553,8 +551,8 @@ export default function Home() {
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-ochre"></span>
                 The Journey
               </h3>
-              <p className="text-sm text-brand-blue/80 leading-relaxed">
-                Established as &apos;Christ College&apos; in 1969, it undertook path-breaking initiatives in Indian higher education. Conferred Autonomy in 2004 and Deemed to be University status in 2008. Currently accredited with NAAC <span className="font-bold text-brand-cyan">A+ Grade</span> and ranked among India&apos;s leading institutions.
+              <p className="text-xs text-brand-blue/80 leading-relaxed">
+                Since its founding under the School of Sciences at the Delhi NCR campus, EULIM has evolved into a powerhouse of student research. We organize national olympiads, the Journal Club, expert panels, and our annual flagship Science Exhibition.
               </p>
             </motion.div>
           </div>
@@ -585,7 +583,7 @@ export default function Home() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
               {campuses.map((campus, i) => {
-                const isNcr = campus.code === "DELHI NCR";
+                const isNcr = campus.code.includes("DELHI NCR");
                 return (
                   <motion.div 
                     key={campus.name}
@@ -654,13 +652,13 @@ export default function Home() {
               
               <div className="space-y-4 text-sm text-brand-blue/70 leading-relaxed font-normal">
                 <p>
-                  The EULIM Science Club, a vibrant and dynamic hub under the School of Sciences at CHRIST (Deemed to be University), Delhi NCR Campus, is the epicenter of intellectual curiosity and scientific exploration.
+                  The EULIM Science Club, representing the School of Sciences at CHRIST, Delhi NCR, is a vibrant hub for student research and interdisciplinary exploration.
                 </p>
                 <p>
-                  Throughout the academic year, EULIM orchestrates a diverse array of events that cater to the inquisitive minds of the student body. From captivating corporate talks that bridge the gap between academia and industry, to immersive science exhibitions that showcase cutting-edge research and discoveries.
+                  From national hackathons to expert panel discussions, EULIM bridges the gap between classrooms and industry frameworks, inspiring students to turn abstract formulas into working solutions.
                 </p>
                 <p>
-                  The club also hosts thought-provoking panel discussions, bringing together experts from various scientific domains to debate and dissect contemporary issues.
+                  Our flagship Science Exhibition and Journal Clubs provide peer mentorship, helping members build research papers, projects, and collaborative ties.
                 </p>
               </div>
 

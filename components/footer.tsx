@@ -131,6 +131,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/quest"
+                  className="text-brand-blue/80 hover:text-brand-cyan transition-colors"
+                >
+                  Quantum Quest 2026
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://ncr.christuniversity.in"
                   target="_blank"

@@ -13,6 +13,7 @@ export function Navbar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Exhibition 2025", href: "/exhibition" },
+    { name: "Quantum Quest", href: "/quest" },
   ];
 
   return (

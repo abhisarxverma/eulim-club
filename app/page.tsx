@@ -133,16 +133,6 @@ export default function Home() {
     { name: "MD. Saif", role: "Field Orchestrator", tag: "Hospitality Head", icon: Sparkles },
   ];
 
-  const quantumPhotos = [
-    { label: "The Quest Begins", span: "md:col-span-2 md:row-span-2", img: "https://live.staticflickr.com/65535/55145781247_06376c09bd_c.jpg" },
-    { label: "Clue Decoding", img: "https://live.staticflickr.com/65535/55147056710_a993cfcbb4_c.jpg" },
-    { label: "Team Strategy", img: "https://live.staticflickr.com/65535/55147056725_2190a938bf_c.jpg" },
-    { label: "Campus Hunt", img: "https://live.staticflickr.com/65535/55146679186_13aa653df9_b.jpg" },
-    { label: "Challenge Station", img: "https://live.staticflickr.com/65535/55145781307_da2e331f9a_c.jpg" },
-    { label: "Final Showdown", span: "md:col-span-2", img: "https://live.staticflickr.com/65535/55146839093_fb82993af7_c.jpg" },
-    { label: "Victory Moment", img: "https://live.staticflickr.com/65535/55146839068_de2414eeed_b.jpg" },
-    { label: "Group Photo", img: "https://live.staticflickr.com/65535/55147056770_f5e35dd8d8_b.jpg" },
-  ];
 
 
 
@@ -734,133 +724,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: INTERACTIVE EVENT: ENIGMA EXPEDITION */}
+      {/* SECTION 5: INTERACTIVE EVENT: ENIGMA EXPEDITION TEASER */}
       <section className="py-20 md:py-24 border-b border-brand-border bg-brand-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="relative rounded-2xl overflow-hidden border border-red-900/40 bg-[#0e0d0f] p-8 sm:p-12 text-center shadow-xl shadow-red-950/20"
           >
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-ochre/30 bg-brand-card text-brand-ochre text-xs font-semibold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              Quantum Quest 2026
-            </div>
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              The Enigma Expedition
-            </p>
-            <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
-              Explore our thrilling &quot;Stranger Things&quot;-themed science treasure hunt spanning the entire campus.
-            </p>
-          </motion.div>
+            {/* Background Spooky Ambient Glow */}
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-red-900/10 rounded-full filter blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-red-900/10 rounded-full filter blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-            
-            {/* Event Description Card */}
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="lg:col-span-5 bg-brand-card border border-brand-border p-8 rounded-lg space-y-6 shadow-sm hover:shadow-md transition-all duration-300"
-            >
-              <div className="flex justify-between items-center pb-4 border-b border-brand-border">
-                <h3 className="text-base font-bold text-brand-blue">Expedition Logistics</h3>
-                <span className="text-[10px] font-bold text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded-full uppercase tracking-wider">Stranger Things theme</span>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-xs text-brand-blue/70 leading-relaxed">
-                  Quantum Quest 2026 is organised by EULIM Science Club in collaboration with the <strong className="text-brand-blue">Christ Innovation and Incubation Centre (CIIC)</strong>. Solve science fiction clues, decrypt mathematical cyphers, and trace coordinates to claim prizes.
-                </p>
-
-                <div className="space-y-3.5 pt-2">
-                  <div className="flex items-center gap-3 text-xs text-brand-blue/80">
-                    <Calendar className="w-4 h-4 text-brand-cyan shrink-0" />
-                    <span>09 March, 2026 (Annual Interactive Event)</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-brand-blue/80">
-                    <Clock className="w-4 h-4 text-brand-cyan shrink-0" />
-                    <span>01:45 PM Onwards</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs text-brand-blue/80">
-                    <MapPin className="w-4 h-4 text-brand-cyan shrink-0" />
-                    <span>Synergy Square & Campus Tracks</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 pt-4">
-                  <div className="bg-brand-card border border-brand-border rounded p-3 text-center shadow-sm hover:shadow-md hover:scale-[1.03] transition-all duration-300">
-                    <span className="text-base block mb-0.5">🏆</span>
-                    <span className="text-[10px] font-bold text-brand-blue block">1st Prize</span>
-                    <span className="text-[9px] text-brand-blue/60 block">Gift Hamper & Appreciation</span>
-                  </div>
-                  <div className="bg-brand-card border border-brand-border rounded p-3 text-center shadow-sm hover:shadow-md hover:scale-[1.03] transition-all duration-300">
-                    <span className="text-base block mb-0.5">🎓</span>
-                    <span className="text-[10px] font-bold text-brand-blue block">Participation</span>
-                    <span className="text-[9px] text-brand-blue/60 block">E-Certificates for All</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Event Gallery */}
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="lg:col-span-7 space-y-6"
-            >
-              <h4 className="text-xs font-bold text-brand-blue/50 uppercase tracking-widest">Expedition Archives</h4>
+            <div className="relative z-10 space-y-6 flex flex-col items-center">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-red-900 bg-red-950/40 text-red-400 text-[10px] font-bold uppercase tracking-wider">
+                <Sparkles className="w-3 h-3 text-red-400 animate-pulse" />
+                Featured Sub-Event Archive
+              </span>
               
-              {/* Campuses/Quest bento photo gallery */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {quantumPhotos.slice(0, 5).map((photo, i) => (
-                  <motion.div 
-                    key={photo.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.05 }}
-                    className={`relative rounded-lg overflow-hidden border border-brand-border h-36 group hover:scale-[1.03] transition-all duration-300 ${
-                      photo.span || ""
-                    }`}
-                  >
-                    <img 
-                      src={photo.img} 
-                      alt={photo.label}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/85 via-transparent to-transparent flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-[10px] font-bold text-white tracking-wide">{photo.label}</span>
-                    </div>
-                  </motion.div>
-                ))}
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-display text-white">
+                The <span className="text-red-500">Enigma</span> Expedition
+              </h2>
+              
+              <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+                Step back into our Stranger Things-themed interactive treasure hunt archives. Review the mathematical locks, physics coordinates, and hardware ciphers that tested our student codebreakers.
+              </p>
+
+              <div className="pt-2">
+                <Link
+                  href="/quest"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold text-white bg-red-600 hover:bg-red-700 rounded-md transition-all hover:scale-105 active:scale-95 shadow-md shadow-red-900/20 border border-red-500/20"
+                >
+                  Explore the Archives
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-            </motion.div>
-
-          </div>
-
-          {/* Collaborator logo list */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="border-t border-brand-border pt-10 mt-10"
-          >
-            <h4 className="text-[10px] font-bold text-brand-blue/40 uppercase tracking-widest text-center mb-6">Organisers & Collaborators</h4>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              {["CIIC", "Institution's Innovation Council", "Christ Incubation Centre", "EULIM Science Club"].map((name) => (
-                <div key={name} className="px-4 py-2 border border-brand-border bg-brand-card/50 rounded text-xs font-bold text-brand-blue/60 tracking-wider hover:border-brand-cyan/40 hover:scale-[1.03] transition-all duration-300">
-                  {name}
-                </div>
-              ))}
             </div>
           </motion.div>
 

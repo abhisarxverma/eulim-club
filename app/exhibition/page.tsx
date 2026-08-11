@@ -18,7 +18,9 @@ import {
   Beaker,
   LineChart,
   Globe2,
-  Rocket
+  Rocket,
+  Play,
+  ArrowRight
 } from "lucide-react";
 
 interface AccordionItem {
@@ -175,6 +177,7 @@ export default function ExhibitionPage() {
         <span className="text-sm font-bold text-brand-blue">Science Exhibition 2025</span>
         <div className="flex items-center gap-4">
           <Link href="#categories" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Categories</Link>
+          <Link href="#winners" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Winners</Link>
           <Link href="#gallery" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Gallery</Link>
           <Link href="#guidelines" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Guidelines</Link>
           <Link href="#register" className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all active:scale-95">
@@ -195,10 +198,10 @@ export default function ExhibitionPage() {
                 Annual Flagship Event
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-brand-blue tracking-tight leading-tight font-display">
-                Showcasing the Next Wave of Scientific Discovery
+                EULIM Science Exhibition 2025
               </h1>
               <p className="text-base sm:text-lg text-brand-blue/70 leading-relaxed max-w-2xl">
-                The EULIM annual Science Exhibition brings together student ingenuity and academic research. We invite teams to submit experimental setups, analytics dashboards, and scientific prototypes.
+                The School of Sciences annual flagship event showcasing student projects, theoretical mathematical research, and smart hardware prototypes.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-2">
@@ -320,14 +323,128 @@ export default function ExhibitionPage() {
         </div>
       </section>
 
+      {/* Winners Showcase Section */}
+      <section id="winners" className="py-20 md:py-24 border-b border-brand-border bg-white scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3 block">Honoring Innovation</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
+              Exhibition Winners
+            </h2>
+            <p className="mt-4 text-sm text-brand-blue/70 leading-relaxed">
+              Celebrating outstanding scientific inquiries and analytical models developed by our student researchers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Left Column: First Place Spotlight Project */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="bg-brand-bg-muted border border-brand-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="flex justify-between items-center pb-3 border-b border-brand-border mb-4">
+                  <div>
+                    <span className="text-[10px] font-bold text-brand-ochre bg-brand-ochre/10 px-2.5 py-1 rounded-full uppercase tracking-wider">🏆 Outstanding Project Award</span>
+                    <h3 className="text-base font-extrabold text-brand-blue mt-2">Quantum Simulation of Molecular Orbitals</h3>
+                  </div>
+                  <span className="text-xs font-bold text-brand-cyan">Discovery Constructs</span>
+                </div>
+                
+                <p className="text-xs text-brand-blue/70 leading-relaxed">
+                  Developed by the Physics & Chemistry research team, this simulation model mapped wave functions onto atomic setups, allowing real-time visualization of chemical bonds.
+                </p>
+
+                {/* Grid for Winner Photos */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <div className="relative rounded-lg overflow-hidden border border-brand-border h-44 shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                    <img 
+                      src="https://live.staticflickr.com/65535/54845260504_8cd7de79b0_b.jpg" 
+                      alt="Winner Project Presentation" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-black/60 p-2 text-center text-[10px] font-bold text-white">
+                      Jury Presentation
+                    </div>
+                  </div>
+                  
+                  <div className="relative rounded-lg overflow-hidden border border-brand-border h-44 shadow-sm hover:scale-[1.02] transition-transform duration-300">
+                    <img 
+                      src="https://live.staticflickr.com/65535/54845015236_55fd11234f_b.jpg" 
+                      alt="Winner Team Award" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-black/60 p-2 text-center text-[10px] font-bold text-white">
+                      Award Ceremony
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Video Playback & Runners Up list */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              {/* Winner Interview Video Placeholder */}
+              <div className="bg-brand-card border border-brand-border rounded-xl overflow-hidden shadow-sm hover:border-brand-cyan/20 transition-all duration-300">
+                <div className="relative h-48 bg-black flex items-center justify-center">
+                  <img 
+                    src="https://live.staticflickr.com/65535/54845271003_d029739670_b.jpg" 
+                    alt="Winner Video Thumbnail" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-60"
+                  />
+                  <button 
+                    onClick={() => alert("Playing project demonstration highlights video...")}
+                    className="relative z-10 w-12 h-12 rounded-full bg-brand-cyan hover:bg-brand-cyan/90 border border-brand-cyan/40 flex items-center justify-center text-white shadow-lg transition-transform hover:scale-110 active:scale-95"
+                    aria-label="Play project highlights"
+                  >
+                    <Play className="w-5 h-5 fill-white ml-0.5" />
+                  </button>
+                  <span className="absolute bottom-3 right-3 text-[9px] font-bold text-white bg-black/70 px-2 py-0.5 rounded">
+                    Winner Highlight (3:15)
+                  </span>
+                </div>
+                <div className="p-4">
+                  <h4 className="text-xs font-bold text-brand-blue">Winning Team Interview & Demo</h4>
+                  <p className="text-[10px] text-brand-blue/60 mt-1">A walkthrough of the mathematical parameters and hardware structures.</p>
+                </div>
+              </div>
+
+              {/* Runners Up list */}
+              <div className="bg-brand-card border border-brand-border rounded-xl p-5 shadow-sm space-y-4">
+                <h4 className="text-xs font-bold text-brand-blue border-b border-brand-border pb-2">Honorable Mentions</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center text-xs">
+                    <div>
+                      <p className="font-bold text-brand-blue">Statistical Soil Analysis Map</p>
+                      <p className="text-[10px] text-brand-blue/60">Insight Showcase • Category II</p>
+                    </div>
+                    <span className="text-[10px] font-bold text-brand-cyan">2nd Place</span>
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <div>
+                      <p className="font-bold text-brand-blue">IoT Smart Hydroponic Setup</p>
+                      <p className="text-[10px] text-brand-blue/60">Future Ventures • Category IV</p>
+                    </div>
+                    <span className="text-[10px] font-bold text-brand-cyan">3rd Place</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
       {/* Catalyst Chronicles Gallery Section */}
       <section id="gallery" className="py-20 md:py-24 border-b border-brand-border bg-brand-card scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Expedition Archives</h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              Catalyst Chronicles
-            </p>
+            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3 block">Expedition Archives</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
+              Past Exhibition Gallery
+            </h2>
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               Snapshots of student displays, jury visits, and ceremonies from past science events.
             </p>
@@ -383,12 +500,12 @@ export default function ExhibitionPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12 flex flex-col items-center">
             <EulyMascot pose="idea" size={70} className="mb-2 shrink-0" />
-            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">
+            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3 block">
               Official Regulations
+            </span>
+            <h2 className="text-3xl font-extrabold text-brand-blue tracking-tight font-display">
+              Exhibition Guidelines & FAQs
             </h2>
-            <p className="text-3xl font-extrabold text-brand-blue tracking-tight font-display">
-              Exhibition Guidelines
-            </p>
           </div>
 
           {/* Accordion Component */}
@@ -435,20 +552,20 @@ export default function ExhibitionPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="space-y-4 mb-10 flex flex-col items-center">
             <EulyMascot pose="support" size={90} className="mb-2 shrink-0 animate-bounce" />
-            <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase">
+            <span className="text-xs font-bold tracking-widest text-brand-cyan uppercase block mb-1">
               Secure Your Slot
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
+              Registration & Abstract Submission
             </h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              Register for Exhibition 2025
-            </p>
             <p className="text-sm text-brand-blue/70 max-w-xl mx-auto leading-relaxed">
-              Complete your team registration by scanning the QR code below or downloading the registration form. Ensure your abstract is ready for review.
+              Complete your team registration by scanning the QR code or clicking the direct Google Form link below.
             </p>
           </div>
 
-          <div className="bg-brand-card border border-brand-border p-8 rounded-lg max-w-sm mx-auto shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col items-center gap-6">
+          <div className="bg-brand-card border border-brand-border p-8 rounded-lg max-w-md mx-auto shadow-md hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col items-center gap-6">
             {/* Styled SVG QR Code Placeholder */}
-            <div className="relative w-48 h-48 bg-white border border-brand-border rounded-lg flex items-center justify-center p-4">
+            <div className="relative w-44 h-44 bg-white border border-brand-border rounded-lg flex items-center justify-center p-4">
               <svg viewBox="0 0 100 100" className="w-full h-full text-brand-blue">
                 {/* QR Outer boxes */}
                 <rect x="5" y="5" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="6" />
@@ -493,32 +610,54 @@ export default function ExhibitionPage() {
               </div>
             </div>
 
-            <div className="text-center space-y-1">
-              <span className="text-xs font-semibold text-brand-blue/50 uppercase tracking-widest">Portal Access</span>
-              <p className="text-sm font-bold text-brand-blue">Scan to Register Team</p>
-              <p className="text-xs text-brand-blue/60">Processes registrations & abstracts</p>
+            <div className="text-center space-y-2">
+              <p className="text-sm font-extrabold text-brand-blue">Scan or Click to Register Team</p>
+              <p className="text-xs text-brand-blue/60 leading-relaxed">
+                Fill out the form below to register your members and upload abstracts.
+              </p>
+              <a 
+                href="https://forms.gle/eulimExhibition2025Registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-xs font-bold text-brand-cyan hover:underline mt-1"
+              >
+                forms.gle/eulimExhibition2025Registration
+              </a>
             </div>
 
-            <div className="w-full pt-2 border-t border-brand-border flex gap-3">
-              <a
-                href="#download-form"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Downloading registration form template (PDF)...");
-                }}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-brand-blue bg-white hover:bg-brand-card border border-brand-border rounded-md transition-all active:scale-95"
+            <div className="w-full pt-4 border-t border-brand-border flex flex-col gap-3">
+              <a 
+                href="https://forms.gle/eulimExhibition2025Registration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-bold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-md transition-all active:scale-95 shadow-sm shadow-brand-cyan/10"
               >
-                <Download className="w-3.5 h-3.5" />
-                Download Form
+                Open Google Registration Form
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
-              <button
-                onClick={() => {
-                  alert("Link copied! Share it with your teammates.");
-                }}
-                className="inline-flex items-center justify-center px-4 py-2.5 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-md transition-all active:scale-95"
-              >
-                Share Link
-              </button>
+
+              <div className="flex gap-3">
+                <a
+                  href="#download-form"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("Downloading registration form template (PDF)...");
+                  }}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-semibold text-brand-blue bg-white hover:bg-brand-bg-muted border border-brand-border rounded-md transition-all active:scale-95"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF Template
+                </a>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText("https://forms.gle/eulimExhibition2025Registration");
+                    alert("Link copied to clipboard! Share it with your teammates.");
+                  }}
+                  className="flex-1 inline-flex items-center justify-center px-3 py-2.5 text-xs font-semibold text-brand-blue bg-white hover:bg-brand-bg-muted border border-brand-border rounded-md transition-all active:scale-95"
+                >
+                  Share Link
+                </button>
+              </div>
             </div>
           </div>
 

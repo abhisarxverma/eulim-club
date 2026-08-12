@@ -180,6 +180,14 @@ export default function ExhibitionPage() {
           <Link href="#winners" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Winners</Link>
           <Link href="#gallery" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Gallery</Link>
           <Link href="#guidelines" className="text-xs font-medium text-brand-blue/70 hover:text-brand-cyan transition-colors hidden sm:block">Guidelines</Link>
+          <a
+            href="/EULIM_Science_Exhibition_2025_Brochure.pdf"
+            download="EULIM_Science_Exhibition_2025_Brochure.pdf"
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium text-brand-blue border border-brand-border hover:border-brand-cyan/40 hover:bg-brand-bg-muted rounded-pill transition-all active:scale-95"
+          >
+            <Download className="w-3.5 h-3.5 text-brand-cyan" />
+            Brochure
+          </a>
           <Link href="#register" className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-white bg-brand-cyan hover:bg-brand-cyan/95 rounded-pill transition-all active:scale-95">
             Register
           </Link>
@@ -211,6 +219,14 @@ export default function ExhibitionPage() {
                 >
                   Register Team
                 </Link>
+                <a
+                  href="/EULIM_Science_Exhibition_2025_Brochure.pdf"
+                  download="EULIM_Science_Exhibition_2025_Brochure.pdf"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-brand-blue bg-white border border-brand-border rounded-pill hover:bg-brand-bg-muted hover:border-brand-cyan/40 transition-all duration-200 transform active:scale-95 shadow-sm"
+                >
+                  <Download className="w-4.5 h-4.5 text-brand-cyan" />
+                  Download Brochure
+                </a>
                 <Link
                   href="#guidelines"
                   className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-brand-blue bg-brand-card border border-brand-border rounded-pill hover:bg-brand-border transition-all duration-200 transform active:scale-95"
@@ -262,6 +278,17 @@ export default function ExhibitionPage() {
                       <p className="text-xs text-brand-blue/60">CHRIST (Deemed to be University), Delhi NCR Campus</p>
                     </div>
                   </div>
+                </div>
+
+                <div className="pt-4 border-t border-brand-border">
+                  <a
+                    href="/EULIM_Science_Exhibition_2025_Brochure.pdf"
+                    download="EULIM_Science_Exhibition_2025_Brochure.pdf"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold text-brand-blue bg-brand-bg-muted hover:bg-brand-border border border-brand-border rounded transition-all active:scale-95"
+                  >
+                    <Download className="w-4 h-4 text-brand-cyan" />
+                    Download Event Brochure (PDF)
+                  </a>
                 </div>
               </div>
             </div>

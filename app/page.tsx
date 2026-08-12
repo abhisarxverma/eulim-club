@@ -521,7 +521,7 @@ export default function Home() {
 
           {/* Campuses Bento Grid */}
           <div className="space-y-6">
-            <h3 className="text-base font-bold text-brand-blue tracking-tight text-center">Our Campuses</h3>
+            <h3 className="text-base font-bold text-brand-blue tracking-tight text-center">Campuses of CHRIST (Deemed to be University)</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
               {campuses.map((campus, i) => {

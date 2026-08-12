@@ -105,7 +105,7 @@ export default function ExhibitionPage() {
       title: "Who is eligible to participate?",
       content: (
         <p className="text-sm text-brand-blue/80 leading-relaxed">
-          The exhibition is open to all undergraduate and postgraduate students enrolled in the School of Sciences and allied engineering streams at Christ (Deemed to be University), Delhi NCR Campus. Cross-departmental collaboration within teams is highly encouraged.
+          The exhibition is open to all undergraduate and postgraduate students enrolled in the School of Sciences and allied engineering streams at CHRIST (Deemed to be University), Delhi NCR Campus. Cross-departmental collaboration within teams is highly encouraged.
         </p>
       )
     },
@@ -259,7 +259,7 @@ export default function ExhibitionPage() {
                     <div>
                       <p className="text-xs font-semibold text-brand-blue/40 uppercase tracking-wider">Location</p>
                       <p className="text-sm font-bold text-brand-blue">Synergy Square</p>
-                      <p className="text-xs text-brand-blue/60">Christ University Delhi NCR Campus</p>
+                      <p className="text-xs text-brand-blue/60">CHRIST (Deemed to be University), Delhi NCR Campus</p>
                     </div>
                   </div>
                 </div>

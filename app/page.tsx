@@ -115,7 +115,7 @@ export default function Home() {
   ];
 
   const milestones = [
-    { year: "2019", title: "Club Founded", desc: "EULIM Science Club was established under the School of Sciences at CHRIST, Delhi NCR Campus." },
+    { year: "2019", title: "Club Founded", desc: "EULIM Science Club was established under the School of Sciences at CHRIST (Deemed to be University), Delhi NCR Campus." },
     { year: "2020", title: "Virtual Horizon", desc: "Adapted to online seminars, expert panel talks, and debates on modern research during the pandemic." },
     { year: "2021", title: "Peer Programs", desc: "Expanded membership and introduced the Journal Club and Mentorship Program for collective learning." },
     { year: "2022", title: "Inaugural Exhibition", desc: "Launched the first physical Science Exhibition, establishing Discovery Constructs and Insight Showcase." },
@@ -188,7 +188,7 @@ export default function Home() {
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-card/50 text-brand-cyan text-xs font-semibold uppercase tracking-wider"
                 >
                   <Atom className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "12s" }} />
-                  School of Sciences • Christ University
+                  School of Sciences • CHRIST (Deemed to be University), Delhi NCR Campus
                 </motion.div>
               </div>
 
@@ -457,7 +457,7 @@ export default function Home() {
           >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">Our Foundation</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              EULIM at Christ University
+              EULIM at CHRIST (Deemed to be University), Delhi NCR Campus
             </p>
             <p className="mt-4 text-sm text-brand-blue/70 leading-relaxed max-w-2xl mx-auto">
               Fostering scientific discipline, collaborative research, and academic rigor under the School of Sciences.
@@ -594,7 +594,7 @@ export default function Home() {
               
               <div className="space-y-4 text-sm text-brand-blue/70 leading-relaxed font-normal">
                 <p>
-                  The EULIM Science Club, representing the School of Sciences at CHRIST, Delhi NCR, is a vibrant hub for student research and interdisciplinary exploration.
+                  The EULIM Science Club, representing the School of Sciences at CHRIST (Deemed to be University), Delhi NCR Campus, is a vibrant hub for student research and interdisciplinary exploration.
                 </p>
                 <p>
                   From national hackathons to expert panel discussions, EULIM bridges the gap between classrooms and industry frameworks, inspiring students to turn abstract formulas into working solutions.
@@ -679,7 +679,7 @@ export default function Home() {
               Club Milestones & Journey
             </p>
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
-              From a small student-led initiative to the epicenter of science innovation at CHRIST Delhi NCR.
+              From a small student-led initiative to the epicenter of science innovation at CHRIST (Deemed to be University), Delhi NCR Campus.
             </p>
           </motion.div>
 
@@ -783,7 +783,7 @@ export default function Home() {
               Leadership Guiding Our Mission
             </p>
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
-              Meet the faculty directors and coordinators driving science engagement at Christ University NCR.
+              Meet the faculty directors and coordinators driving science engagement at CHRIST (Deemed to be University), Delhi NCR Campus.
             </p>
           </motion.div>
 
@@ -930,7 +930,7 @@ export default function Home() {
 const faculty = [
   {
     name: "Dr. Fr. Peter M.V.",
-    title: "Director, Christ University Delhi NCR",
+    title: "Director, CHRIST (Deemed to be University), Delhi NCR Campus",
     msg: "Scientific temper is the foundation of character. EULIM serves as a beacon, guiding students toward holistic innovation and a search for truth through experimental investigation.",
     initials: "FP",
     role: "Director"

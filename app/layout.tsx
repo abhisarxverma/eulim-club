@@ -10,10 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "EULIM Science Club | School of Sciences, Christ (Deemed to be University)",
-  description: "Official portal of EULIM Science Club, School of Sciences at Christ University Delhi NCR Campus. Discover research, panel discussions, and our annual Science Exhibition.",
-  keywords: "EULIM, Science Club, Christ University, Delhi NCR, School of Sciences, Science Exhibition 2025",
-  authors: [{ name: "School of Sciences, Christ University" }],
+  title: "EULIM Science Club | School of Sciences, CHRIST (Deemed to be University), Delhi NCR Campus",
+  description: "Official portal of EULIM Science Club, School of Sciences at CHRIST (Deemed to be University), Delhi NCR Campus. Discover research, panel discussions, and our annual Science Exhibition.",
+  keywords: "EULIM, Science Club, CHRIST University, Delhi NCR, School of Sciences, Science Exhibition 2025",
+  authors: [{ name: "School of Sciences, CHRIST (Deemed to be University), Delhi NCR Campus" }],
 };
 
 interface LayoutProps<T> {

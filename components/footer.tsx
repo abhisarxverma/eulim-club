@@ -25,7 +25,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-brand-blue/70 max-w-sm leading-relaxed">
-              Bridging the gap between academic depth and student innovation at the School of Sciences, Christ (Deemed to be University), Delhi NCR Campus.
+              Bridging the gap between academic depth and student innovation at the School of Sciences, CHRIST (Deemed to be University), Delhi NCR Campus.
             </p>
             <div className="flex space-x-4 pt-2">
               <a
@@ -59,7 +59,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-blue/70 hover:text-brand-cyan hover:border-brand-cyan bg-white transition-colors duration-200"
-                aria-label="Christ University Website"
+                aria-label="CHRIST (Deemed to be University), Delhi NCR Campus Website"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <circle cx="12" cy="12" r="10" />
@@ -84,14 +84,14 @@ export function Footer() {
                 <span className="leading-snug">
                   School of Sciences,
                   <br />
-                  Christ University NCR,
+                  CHRIST (Deemed to be University), Delhi NCR Campus,
                   <br />
                   Mariam Nagar, Ghaziabad,
                   <br />
                   Delhi NCR - 201003
                 </span>
               </li>
-              <li className="flex items-center gap-2.5 text-sm text-brand-blue/80">
+              {/* <li className="flex items-center gap-2.5 text-sm text-brand-blue/80">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-cyan shrink-0">
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -102,7 +102,7 @@ export function Footer() {
                 >
                   scienceclub.ncr@christuniversity.in
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -145,7 +145,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-brand-blue/80 hover:text-brand-cyan transition-colors"
                 >
-                  Christ University NCR
+                  CHRIST (Deemed to be University), Delhi NCR Campus
                 </a>
               </li>
             </ul>

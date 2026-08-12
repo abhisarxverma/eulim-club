@@ -102,10 +102,10 @@ export default function Home() {
   };
 
   const universityHighlights = [
-    { stat: "2019", title: "Club Founded", desc: "Established at the School of Sciences, Delhi NCR to foster student-led scientific inquiry.", color: "text-brand-ochre" },
-    { stat: "500+", title: "Active Members", desc: "A vibrant network of students from Mathematics, Physics, Statistics, and Computer Science.", color: "text-brand-cyan" },
-    { stat: "15+", title: "Annual Events", desc: "From technical panel debates to high-stakes treasure hunts like the Enigma Expedition.", color: "text-brand-cyan" },
-    { stat: "A+", title: "Academic Synergy", desc: "Mentored by expert faculty to bridge theoretical curricula with active research models.", color: "text-brand-ochre" },
+    { stat: "38000+", title: "Students Enrolled", desc: "Across all programmes", color: "text-brand-cyan" },
+    { stat: "NAAC A+", title: "A+ Accredited", desc: "Top Ranked University", color: "text-brand-ochre" },
+    { stat: "500+", title: "Active Members", desc: "Within the School of Sciences at the Delhi NCR Campus.", color: "text-brand-cyan" },
+    { stat: "2019", title: "EULIM Founded", desc: "Fostering academic excellence and collaborative research.", color: "text-brand-ochre" },
   ];
 
   const campuses = [
@@ -482,15 +482,28 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="bg-white border border-brand-border p-8 rounded-lg shadow-sm hover:scale-[1.01] hover:shadow-md transition-all duration-300"
+              className="bg-white border border-brand-border p-8 rounded-lg shadow-sm hover:scale-[1.01] hover:shadow-md transition-all duration-300 flex flex-col justify-between"
             >
-              <h3 className="text-lg font-bold text-brand-blue mb-4 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
-                The Vision
-              </h3>
-              <p className="text-xs text-brand-blue/80 leading-relaxed">
-                Guided by the university's focus on educational excellence, the EULIM Science Club empowers students to explore deep mathematics, physics structures, statistics, and computational analytics to solve complex real-world challenges.
-              </p>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-bold text-brand-blue mb-2 flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
+                    Vision
+                  </h3>
+                  <p className="text-sm font-semibold text-brand-blue/90 italic">
+                    &ldquo;Excellence and Service&rdquo;
+                  </p>
+                </div>
+                <div className="border-t border-brand-border-muted pt-4">
+                  <h3 className="text-lg font-bold text-brand-blue mb-2 flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan"></span>
+                    Mission
+                  </h3>
+                  <p className="text-xs text-brand-blue/80 leading-relaxed">
+                    CHRIST (Deemed to be University) is a nurturing ground for an individual&apos;s holistic development to make effective contribution to the society in a dynamic environment.
+                  </p>
+                </div>
+              </div>
             </motion.div>
             
             <motion.div
@@ -502,11 +515,22 @@ export default function Home() {
             >
               <h3 className="text-lg font-bold text-brand-blue mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-ochre"></span>
-                The Journey
+                Core Values
               </h3>
-              <p className="text-xs text-brand-blue/80 leading-relaxed">
-                Since its founding under the School of Sciences at the Delhi NCR campus, EULIM has evolved into a powerhouse of student research. We organize national olympiads, the Journal Club, expert panels, and our annual flagship Science Exhibition.
-              </p>
+              <ul className="space-y-3">
+                {[
+                  "Faith in God",
+                  "Moral Uprightness",
+                  "Love of Fellow Beings",
+                  "Social Responsibility",
+                  "Pursuit of Excellence"
+                ].map((val) => (
+                  <li key={val} className="flex items-center gap-2.5 text-xs text-brand-blue/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-ochre shrink-0" />
+                    <span className="font-medium">{val}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
 

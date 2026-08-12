@@ -125,12 +125,8 @@ export default function Home() {
   ];
 
   const studentTeam = [
-    { name: "Shayan Azmi", role: "Architect of Inquiry", tag: "Leader", icon: Crown },
-    { name: "Aryan S. Nair", role: "Catalyst Prime", tag: "Co-Leader", icon: Shield },
-    { name: "Aryan Manna", role: "The Founding Nucleus", tag: "Ex-Leader | Mentor", icon: Star },
-    { name: "Prashant Parwani", role: "The Guiding Proton", tag: "Ex Co-Leader | Mentor", icon: Star },
-    { name: "Aryan Garg", role: "Signal Amplifier", tag: "PR & Sponsorship Head", icon: Sparkles },
-    { name: "MD. Saif", role: "Field Orchestrator", tag: "Hospitality Head", icon: Sparkles },
+    { name: "Shayan Azmi", role: "Architect of Inquiry", tag: "Leader (3rd Year)", icon: Crown },
+    { name: "Aryan S. Nair", role: "Catalyst Prime", tag: "Co-Leader (3rd Year)", icon: Shield },
   ];
 
 
@@ -800,8 +796,19 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm tracking-wide shrink-0">
-                        {member.initials}
+                      <div className="w-12 h-12 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm tracking-wide shrink-0 relative overflow-hidden">
+                        {member.image ? (
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover scale-125"
+                            style={{ objectPosition: "center 15%" }}
+                          />
+                        ) : (
+                          member.initials
+                        )}
                       </div>
                       <div>
                         <h3 className="text-base font-bold text-brand-blue leading-tight">{member.name}</h3>
@@ -831,8 +838,19 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm tracking-wide shrink-0">
-                        {member.initials}
+                      <div className="w-12 h-12 rounded-full bg-brand-blue/5 border border-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm tracking-wide shrink-0 relative overflow-hidden">
+                        {member.image ? (
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover scale-125"
+                            style={{ objectPosition: "center 15%" }}
+                          />
+                        ) : (
+                          member.initials
+                        )}
                       </div>
                       <div>
                         <h3 className="text-base font-bold text-brand-blue leading-tight">{member.name}</h3>
@@ -865,14 +883,14 @@ export default function Home() {
           >
             <h2 className="text-xs font-bold tracking-widest text-brand-cyan uppercase mb-3">The Neural Network</h2>
             <p className="text-3xl sm:text-4xl font-extrabold text-brand-blue tracking-tight font-display">
-              Meet the Catalysts
+              Student Leadership
             </p>
             <p className="mt-4 text-base text-brand-blue/70 leading-relaxed">
               The student organizers and leaders coordinating club activities and academic partnerships.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {studentTeam.map((member, i) => {
               const IconComp = member.icon;
               return (
@@ -933,34 +951,39 @@ const faculty = [
     title: "Director, CHRIST (Deemed to be University), Delhi NCR Campus",
     msg: "Scientific temper is the foundation of character. EULIM serves as a beacon, guiding students toward holistic innovation and a search for truth through experimental investigation.",
     initials: "FP",
-    role: "Director"
+    role: "Director",
+    image: "/peter_mv.png"
   },
   {
     name: "Dr. Jeanne Poulose",
     title: "Dean, School of Sciences",
     msg: "Our mission is to foster scientific dialogue that transcends classrooms. EULIM encourages a rigorous, inquiry-based approach to address real-world global challenges.",
     initials: "JP",
-    role: "Dean"
+    role: "Dean",
+    image: "/jeanne.png"
   },
   {
     name: "Dr. Bosco Paul Alapatt",
-    title: "Head, Department of Sciences",
+    title: "Associate Dean and HoD, School of Sciences",
     msg: "By encouraging collaborations between departments, the EULIM Science Club builds critical thinkers who apply mathematical, statistical, and computer sciences to expand human knowledge.",
     initials: "BA",
-    role: "HoD"
+    role: "Associate Dean & HoD",
+    image: "/bosco.png"
   },
   {
     name: "Prof. Vandana Mehndiratta",
-    title: "Faculty Coordinator, EULIM",
+    title: "Academic Coordinator",
     msg: "We support students in translating classroom concepts into working models, helping them bridge academic theory with industry execution.",
     initials: "VM",
-    role: "Coordinator"
+    role: "Academic Coordinator",
+    image: "/vandana.png"
   },
   {
-    name: "Prof. Amrit Kaur Saggu",
+    name: "Yash Thakur",
     title: "Faculty Coordinator, EULIM",
     msg: "EULIM provides a launchpad for student-led research and peer learning. Seeing our students collaborate on the annual exhibition is incredibly rewarding.",
-    initials: "AS",
-    role: "Coordinator"
+    initials: "YT",
+    role: "Faculty Coordinator",
+    image: "/yash.png"
   }
 ];

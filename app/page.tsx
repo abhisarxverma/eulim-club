@@ -27,7 +27,8 @@ import {
   Send,
   AlertCircle,
   ChevronLeft,
-  Info
+  Info,
+  Phone
 } from "lucide-react";
 
 export default function Home() {
@@ -125,8 +126,22 @@ export default function Home() {
   ];
 
   const studentTeam = [
-    { name: "Shayan Azmi", role: "Architect of Inquiry", tag: "Leader (3rd Year)", icon: Crown },
-    { name: "Aryan S. Nair", role: "Catalyst Prime", tag: "Co-Leader (3rd Year)", icon: Shield },
+    { 
+      name: "Shayan Azmi", 
+      role: "Architect of Inquiry", 
+      tag: "Leader (3rd Year)", 
+      icon: Crown,
+      phone: "+916204139749",
+      phoneFormatted: "+91 62041 39749"
+    },
+    { 
+      name: "Aryan S. Nair", 
+      role: "Catalyst Prime", 
+      tag: "Co-Leader (3rd Year)", 
+      icon: Shield,
+      phone: "+918851408313",
+      phoneFormatted: "+91 88514 08313"
+    },
   ];
 
 
@@ -913,6 +928,36 @@ export default function Home() {
                   <span className="mt-3 text-[10px] font-bold text-brand-ochre bg-brand-ochre/10 px-2 py-0.5 rounded">
                     {member.tag}
                   </span>
+                  
+                  {member.phone && (
+                    <div className="mt-4 pt-3 border-t border-brand-border w-full flex flex-col items-center gap-2">
+                      <p className="text-[11px] text-brand-blue/70 font-semibold tracking-wide">
+                        {member.phoneFormatted}
+                      </p>
+                      <div className="flex gap-2 mt-1">
+                        <a
+                          href={`tel:${member.phone}`}
+                          title="Call"
+                          className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 text-[10px] font-bold text-brand-blue bg-white border border-brand-border rounded hover:bg-brand-bg-muted hover:border-brand-cyan/40 transition-colors"
+                        >
+                          <Phone className="w-3 h-3 text-brand-cyan" />
+                          Call
+                        </a>
+                        <a
+                          href={`https://wa.me/${member.phone.replace("+", "")}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="WhatsApp"
+                          className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 text-[10px] font-bold text-brand-blue bg-white border border-brand-border rounded hover:bg-brand-bg-muted hover:border-brand-cyan/40 transition-colors"
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-green-600">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                          </svg>
+                          WhatsApp
+                        </a>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               );
             })}

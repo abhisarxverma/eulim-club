@@ -29,16 +29,16 @@ export function Footer() {
             </p>
             <div className="space-y-3 pt-3">
               <h4 className="text-[10px] font-bold tracking-widest text-brand-blue/40 uppercase">Connect With Us</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                 {/* School of Sciences Instagram */}
                 <a
                   href="https://www.instagram.com/schoolofsciences_christ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors"
+                  className="flex items-center gap-3 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors group"
                 >
-                  <div className="w-7 h-7 rounded bg-white border border-brand-border flex items-center justify-center text-brand-blue/70 hover:border-brand-cyan/40 hover:text-brand-cyan transition-colors shrink-0 shadow-sm">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <div className="w-9 h-9 rounded bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white shrink-0 shadow-sm transition-transform group-hover:scale-105 duration-200">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
@@ -52,10 +52,10 @@ export function Footer() {
                   href="https://www.instagram.com/eulimscienceclub_official"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors"
+                  className="flex items-center gap-3 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors group"
                 >
-                  <div className="w-7 h-7 rounded bg-white border border-brand-border flex items-center justify-center text-brand-blue/70 hover:border-brand-cyan/40 hover:text-brand-cyan transition-colors shrink-0 shadow-sm">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <div className="w-9 h-9 rounded bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white shrink-0 shadow-sm transition-transform group-hover:scale-105 duration-200">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
@@ -69,10 +69,10 @@ export function Footer() {
                   href="https://www.linkedin.com/company/schoolofsciences"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors"
+                  className="flex items-center gap-3 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors group"
                 >
-                  <div className="w-7 h-7 rounded bg-white border border-brand-border flex items-center justify-center text-brand-blue/70 hover:border-brand-cyan/40 hover:text-brand-cyan transition-colors shrink-0 shadow-sm">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <div className="w-9 h-9 rounded bg-[#0a66c2] flex items-center justify-center text-white shrink-0 shadow-sm transition-transform group-hover:scale-105 duration-200">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                       <rect width="4" height="12" x="2" y="9" />
                       <circle cx="4" cy="4" r="2" />
@@ -86,10 +86,10 @@ export function Footer() {
                   href="https://ncr.christuniversity.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors"
+                  className="flex items-center gap-3 text-xs text-brand-blue/70 hover:text-brand-cyan transition-colors group"
                 >
-                  <div className="w-7 h-7 rounded bg-white border border-brand-border flex items-center justify-center text-brand-blue/70 hover:border-brand-cyan/40 hover:text-brand-cyan transition-colors shrink-0 shadow-sm">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                  <div className="w-9 h-9 rounded bg-white border border-brand-border flex items-center justify-center text-brand-blue/70 hover:border-brand-cyan/40 hover:text-brand-cyan transition-all shrink-0 shadow-sm group-hover:scale-105 duration-200">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                       <circle cx="12" cy="12" r="10" />
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                       <path d="M2 12h20" />
